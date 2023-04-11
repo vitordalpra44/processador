@@ -1,0 +1,8 @@
+UNIDADE LOGICA ARITMÉTICA DO PROCESSADOR
+  Contém as seguintes operações:
+    *Soma
+    *Subtração
+    *Comparação (maior que)
+    *Multiplicação
+    
+   Montada para palavras de 16 bits.
