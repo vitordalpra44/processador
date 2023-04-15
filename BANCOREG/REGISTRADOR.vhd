@@ -22,7 +22,8 @@ begin
             if rising_edge(clk) then
                 registro<=data_in;
             end if;
-        end process;
+        end if;
+    end process;
 
         data_out <= registro;
 end architecture;
