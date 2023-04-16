@@ -14,7 +14,7 @@ entity BANCOREG is
         read_data1: out unsigned(15 downto 0);
         read_data2: out unsigned(15 downto 0)
     );
-
+end entity;
 architecture a_BANCOREG of BANCOREG is
     component REGISTRADOR is
         port(
@@ -26,8 +26,8 @@ architecture a_BANCOREG of BANCOREG is
       );
     end component;
 
-    signal r_data0, r_data1, r_data2, r_data3, r_data4, r_data5, r_data6, r_data7: out unsigned(15 downto 0);
-            wr_en0, wr_en1, wr_en2, wr_en3, wr_en4, wr_en5, wr_en6, wr_en7: in std_logic;
+    signal r_data0, r_data1, r_data2, r_data3, r_data4, r_data5, r_data6, r_data7: unsigned(15 downto 0);
+    signal wr_en0, wr_en1, wr_en2, wr_en3, wr_en4, wr_en5, wr_en6, wr_en7: std_logic;
         begin
         REGISTRADOR0: REGISTRADOR port map(clk=> clk, rst=>rst, wr_en=>wr_en0, data_in=>dado, data_out=>r_data0);
         REGISTRADOR1: REGISTRADOR port map(clk=> clk, rst=>rst, wr_en=>wr_en1, data_in=>dado, data_out=>r_data1);
@@ -58,13 +58,13 @@ architecture a_BANCOREG of BANCOREG is
                       r_data7 when reg2 ="111" else
                       "0000000000000000";
         
-        wr_en0 <= wr_en when wr_reg ="000" else "0";
-        wr_en1 <= wr_en when wr_reg ="001" else "0";
-        wr_en2 <= wr_en when wr_reg ="010" else "0";
-        wr_en3 <= wr_en when wr_reg ="011" else "0";
-        wr_en4 <= wr_en when wr_reg ="100" else "0";
-        wr_en5 <= wr_en when wr_reg ="101" else "0";
-        wr_en6 <= wr_en when wr_reg ="110" else "0";
-        wr_en7 <= wr_en when wr_reg ="111" else "0";
+        wr_en0 <= wr_en when wr_reg ="000" else '0';
+        wr_en1 <= wr_en when wr_reg ="001" else '0';
+        wr_en2 <= wr_en when wr_reg ="010" else '0';
+        wr_en3 <= wr_en when wr_reg ="011" else '0';
+        wr_en4 <= wr_en when wr_reg ="100" else '0';
+        wr_en5 <= wr_en when wr_reg ="101" else '0';
+        wr_en6 <= wr_en when wr_reg ="110" else '0';
+        wr_en7 <= wr_en when wr_reg ="111" else '0';
 
     end architecture;
