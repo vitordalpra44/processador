@@ -70,6 +70,30 @@ architecture a_BANCOREG_tb of BANCOREG_tb is
                 reg1<="000";
                 reg2<="001";
                 dado<="1001111111100111";
+                
+
+                wait for 100 ns;
+                wr_reg<="010";
+                wr_en<='1';
+                reg1<="101";
+                reg2<="111";
+                dado<="1001111000000111";
+                
+
+                wait for 100 ns;
+                wr_reg<="111";
+                wr_en<='1';
+                reg1<="000";
+                reg2<="111";
+                dado<="1001100011100111";
+                
+
+                wait for 100 ns;
+                wr_reg<="000";
+                wr_en<='1';
+                reg1<="000";
+                reg2<="001";
+                dado<="1001111111100111";
                 wait;
         end process;
 end architecture a_BANCOREG_tb;

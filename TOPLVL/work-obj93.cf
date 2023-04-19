@@ -1,0 +1,25 @@
+v 4
+file . "ULA.vhd" "439d968fe737e094d0d09065139c5e92cb4902c6" "20230419150131.182":
+  entity ula at 1( 0) + 0 on 27;
+  architecture a_ula of ula at 15( 290) + 0 on 28;
+file . "mux2x1.vhd" "7c455db119d91be12ca634d70e26eb744aac8885" "20230419150052.772":
+  entity mux2x1 at 1( 0) + 0 on 19;
+  architecture a_mux2x1 of mux2x1 at 14( 260) + 0 on 20;
+file . "BANCOREG.vhd" "1a0508fdfc0a04f1f80b841936e77fa0472721a6" "20230419150110.208":
+  entity bancoreg at 1( 0) + 0 on 23;
+  architecture a_bancoreg of bancoreg at 18( 453) + 0 on 24;
+file . "TOPLVL.vhd" "9b44da626123e307869343c2049c501cc625f097" "20230419150140.405":
+  entity toplvl at 1( 0) + 0 on 29;
+  architecture a_toplvl of toplvl at 20( 478) + 0 on 30;
+file . "TOPLVL_tb.vhd" "62f6d79a3eed47cc67b22189725b1d4b3851a798" "20230419150144.318":
+  entity toplvl_tb at 1( 0) + 0 on 31;
+  architecture a_toplvl_tb of toplvl_tb at 8( 96) + 0 on 32;
+file . "mux4x1.vhd" "aa12e045ca179a2a99e241ac48c58fa521d096b2" "20230419150048.623":
+  entity mux4x1 at 1( 0) + 0 on 17;
+  architecture a_mux4x1 of mux4x1 at 15( 356) + 0 on 18;
+file . "REGISTRADOR.vhd" "723a2afdf248de8216770c59c0c446761d80967b" "20230419150103.094":
+  entity registrador at 1( 0) + 0 on 21;
+  architecture a_registrador of registrador at 14( 311) + 0 on 22;
+file . "operacoes.vhd" "8d55a0095f92c49d9b2777636b3c0fdefffee768" "20230419150119.801":
+  entity operacoes at 1( 0) + 0 on 25;
+  architecture a_operacoes of operacoes at 16( 383) + 0 on 26;

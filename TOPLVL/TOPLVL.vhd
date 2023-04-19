@@ -55,5 +55,5 @@ architecture a_TOPLVL of TOPLVL is
 		ULA0: ULA port map (val0 => read_d1, val1=> mux_out, sel => ula_sel, saida=> ula_out);
 		BANCOREG0: BANCOREG port map (reg1=> banco_r1, reg2=> banco_r2, dado=> ula_out, wr_reg=> write_reg, wr_en=> write_en, clk=> clock, rst=> reset, read_data1=> read_d1, read_data2=> read_d2);
 		MUX0: mux2x1 port map (sinal1=> read_d2, sinal2=> mux_s2, sel=> mux_sel, saida=> mux_out);
-		ula_result <= ula_out;
+		ula_result<=ula_out;
 end architecture;

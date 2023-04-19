@@ -1,13 +1,13 @@
 v 4
-file . "BANCOREG_tb.vhd" "473992fab949204e27cb5056952e018cb1f2add9" "20230416144624.496":
-  entity bancoreg_tb at 1( 0) + 0 on 17;
-  architecture a_bancoreg_tb of bancoreg_tb at 8( 98) + 0 on 18;
-file . "REGISTRADOR_tb.vhd" "ec3e2b7ee54765ddc5307dc8d389e45c5e470507" "20230415225040.003":
-  entity registrador_tb at 1( 0) + 0 on 13;
-  architecture a_registrador_tb of registrador_tb at 8( 101) + 0 on 14;
+file . "BANCOREG.vhd" "1a0508fdfc0a04f1f80b841936e77fa0472721a6" "20230419151115.976":
+  entity bancoreg at 1( 0) + 0 on 25;
+  architecture a_bancoreg of bancoreg at 18( 453) + 0 on 26;
 file . "REGISTRADOR.vhd" "723a2afdf248de8216770c59c0c446761d80967b" "20230415224844.577":
   entity registrador at 1( 0) + 0 on 11;
   architecture a_registrador of registrador at 14( 311) + 0 on 12;
-file . "BANCOREG.vhd" "1a0508fdfc0a04f1f80b841936e77fa0472721a6" "20230416144617.579":
-  entity bancoreg at 1( 0) + 0 on 15;
-  architecture a_bancoreg of bancoreg at 18( 453) + 0 on 16;
+file . "REGISTRADOR_tb.vhd" "ec3e2b7ee54765ddc5307dc8d389e45c5e470507" "20230415225040.003":
+  entity registrador_tb at 1( 0) + 0 on 13;
+  architecture a_registrador_tb of registrador_tb at 8( 101) + 0 on 14;
+file . "BANCOREG_tb.vhd" "e01861f568f607d62780c0ce5052b0688495b4ad" "20230419151119.235":
+  entity bancoreg_tb at 1( 0) + 0 on 27;
+  architecture a_bancoreg_tb of bancoreg_tb at 8( 98) + 0 on 28;
