@@ -13,15 +13,17 @@ end entity;
 
 architecture a_FFT of FFT is
     
-begin
-    process(clk, rst, wr_en)
+    signal saida: std_logic;
+        begin
+    process(clk, rst)
     begin
         if rst='1' then
-            data_out <='0';
+            saida <='0';
         elsif data_in='1' then
             if rising_edge(clk) then
-                data_out<= not data_out;
+                saida <= not saida;
             end if;
         end if;
+        data_out<=saida;
     end process;
 end architecture;

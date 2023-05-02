@@ -1,0 +1,16 @@
+v 4
+file . "PCROM_tb.vhd" "f2afd31a29ccd7233cddabc18dc6f5cb10637786" "20230502171527.835":
+  entity pcrom_tb at 1( 0) + 0 on 43;
+  architecture a_pcrom_tb of pcrom_tb at 8( 95) + 0 on 44;
+file . "FFT.vhd" "b867adf6ae83bcdf51875470aa6d35b67640d5aa" "20230502162844.118":
+  entity fft at 2( 14) + 0 on 15;
+  architecture a_fft of fft at 14( 258) + 0 on 16;
+file . "rom.vhd" "235dac9337cc7fd64113adfbdf8d73fccdc0fa79" "20230502171520.636":
+  entity rom at 2( 44) + 0 on 41;
+  architecture a_rom of rom at 11( 269) + 0 on 42;
+file . "PC.vhd" "2d233ebd95d11ea6e6adafa198f3b1c5bd8006d4" "20230502162444.298":
+  entity pc at 1( 0) + 0 on 13;
+  architecture a_pc of pc at 13( 265) + 0 on 14;
+file . "PCROM.vhd" "3c071226e4d5bc72c810fc52a6417f7a050fb40d" "20230502170837.804":
+  entity pcrom at 2( 25) + 0 on 37;
+  architecture a_pcrom of pcrom at 14( 301) + 0 on 38;
