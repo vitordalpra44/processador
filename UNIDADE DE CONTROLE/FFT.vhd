@@ -17,6 +17,7 @@ architecture a_FFT of FFT is
         begin
     process(clk, rst)
     begin
+		saida <='0';
         if rst='1' then
             saida <='0';
         elsif data_in='1' then

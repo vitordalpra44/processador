@@ -7,7 +7,6 @@ entity un_controle is
     port( instr : in unsigned(17 downto 0);
 		  clk : in std_logic;
 		  rst : in std_logic;
-		  data_in : in std_logic;
 		  jump_en : out std_logic;
 		  update_pc : out std_logic
     );
@@ -25,9 +24,11 @@ architecture a_un_controle of un_controle is
 	
 	signal opcode : unsigned (3 downto 0);
 	signal state : std_logic;
+	signal fft_in: std_logic;
 
 	begin
-		FFT0 : FFT port map (clk=> clk, rst=> rst, data_in=> data_in, data_out=> state);
+		FFT0 : FFT port map (clk=> clk, rst=> rst, data_in=> fft_in, data_out=> state);
+		fft_in <= '1';
 		
 		opcode <= instr (17 downto 14) when state = '0' else
 				  opcode;

@@ -16,11 +16,11 @@ architecture a_TOPLVL_contr_tb of TOPLVL_contr_tb is
 
     constant period_time: time := 100 ns;
     signal finished: std_logic :='0';
-    signal clk, clk_pc, clk_contrl, rst: std_logic;
-    signal rom_out: unsigned (17 downto 0);
+    signal clk, rst: std_logic;
+    signal rom_out_sig: unsigned (17 downto 0);
 
         begin
-            uut: TOPLVL_contr port map(clk_contrl=> clk_contrl, rst=>rst, clk_pc=> clk_pc, rom_out=>rom_out);
+            uut: TOPLVL_contr port map(clk_contrl=> clk, rst=>rst, clk_pc=> clk, rom_out=>rom_out_sig);
 
         sim_time_proc: process
         begin  
@@ -42,120 +42,7 @@ architecture a_TOPLVL_contr_tb of TOPLVL_contr_tb is
 
         process
         begin  
-                wait for 200 ns;
-				clk_contrl <= '0';
-				rst <= '1';
-				clk_pc <= '0';
-                wait for 100 ns;
-				
-				
-                clk_contrl <= '0';
-				rst <= '0';
-				clk_pc <= '0';
-                wait for 100 ns;
-                clk_contrl <= '1';
-				rst <= '0';
-				clk_pc <= '1';
-                wait for 100 ns;
-                clk_contrl <= '0';
-				rst <= '0';
-				clk_pc <= '0';
-                wait for 100 ns;
-                clk_contrl <= '1';
-				rst <= '0';
-				clk_pc <= '1';
-                wait for 100 ns;clk_contrl <= '0';
-				rst <= '0';
-				clk_pc <= '0';
-                wait for 100 ns;
-                clk_contrl <= '1';
-				rst <= '0';
-				clk_pc <= '1';
-                wait for 100 ns;clk_contrl <= '0';
-				rst <= '0';
-				clk_pc <= '0';
-                wait for 100 ns;
-                clk_contrl <= '1';
-				rst <= '0';
-				clk_pc <= '1';
-                wait for 100 ns;clk_contrl <= '0';
-				rst <= '0';
-				clk_pc <= '0';
-                wait for 100 ns;
-                clk_contrl <= '1';
-				rst <= '0';
-				clk_pc <= '1';
-                wait for 100 ns;clk_contrl <= '0';
-				rst <= '0';
-				clk_pc <= '0';
-                wait for 100 ns;
-                clk_contrl <= '1';
-				rst <= '0';
-				clk_pc <= '1';
-                wait for 100 ns;clk_contrl <= '0';
-				rst <= '0';
-				clk_pc <= '0';
-                wait for 100 ns;
-                clk_contrl <= '1';
-				rst <= '0';
-				clk_pc <= '1';
-                wait for 100 ns;clk_contrl <= '0';
-				rst <= '0';
-				clk_pc <= '0';
-                wait for 100 ns;
-                clk_contrl <= '1';
-				rst <= '0';
-				clk_pc <= '1';
-                wait for 100 ns;clk_contrl <= '0';
-				rst <= '0';
-				clk_pc <= '0';
-                wait for 100 ns;
-                clk_contrl <= '1';
-				rst <= '0';
-				clk_pc <= '1';
-                wait for 100 ns;clk_contrl <= '0';
-				rst <= '0';
-				clk_pc <= '0';
-                wait for 100 ns;
-                clk_contrl <= '1';
-				rst <= '0';
-				clk_pc <= '1';
-                wait for 100 ns;clk_contrl <= '0';
-				rst <= '0';
-				clk_pc <= '0';
-                wait for 100 ns;
-                clk_contrl <= '1';
-				rst <= '0';
-				clk_pc <= '1';
-                wait for 100 ns;clk_contrl <= '0';
-				rst <= '0';
-				clk_pc <= '0';
-                wait for 100 ns;
-                clk_contrl <= '1';
-				rst <= '0';
-				clk_pc <= '1';
-                wait for 100 ns;clk_contrl <= '0';
-				rst <= '0';
-				clk_pc <= '0';
-                wait for 100 ns;
-                clk_contrl <= '1';
-				rst <= '0';
-				clk_pc <= '1';
-                wait for 100 ns;clk_contrl <= '0';
-				rst <= '0';
-				clk_pc <= '0';
-                wait for 100 ns;
-                clk_contrl <= '1';
-				rst <= '0';
-				clk_pc <= '1';
-                wait for 100 ns;clk_contrl <= '0';
-				rst <= '0';
-				clk_pc <= '0';
-                wait for 100 ns;
-                clk_contrl <= '1';
-				rst <= '0';
-				clk_pc <= '1';
-                wait for 100 ns;
+               rst <='0';
                 wait;
         end process;
 end architecture;

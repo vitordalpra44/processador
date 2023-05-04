@@ -17,7 +17,6 @@ architecture a_TOPLVL_contr of TOPLVL_contr is
        port( instr : in unsigned(17 downto 0);
 		  clk : in std_logic;
 		  rst : in std_logic;
-		  data_in : in std_logic;
 		  jump_en : out std_logic;
 		  update_pc : out std_logic
     );
@@ -39,19 +38,17 @@ architecture a_TOPLVL_contr of TOPLVL_contr is
 	signal PC_in : unsigned (3 downto 0);
 	signal enable : std_logic;
 	signal up_pc : std_logic;
-	signal data_in_ff :std_logic;
-	signal unit : unsigned (0 downto 0);
+	signal unit : unsigned (3 downto 0);
 
 
 	begin
-		CONTROLE0 : un_controle port map (instr=> opcode, clk=> clk_contrl, rst=> rst, data_in=>data_in_ff, jump_en=> jump, update_pc=>up_pc);
+		CONTROLE0 : un_controle port map (instr=> opcode, clk=> clk_contrl, rst=> rst, jump_en=> jump, update_pc=>up_pc);
 		PCROM0 : PCROM port map (clk_pr=>clk_pc, wr_en=> enable, data_in_pc=> PC_in, data_out_rom=> opcode);
 		
 		enable <= '1';
 		rom_out <= opcode;
-		unit <= "1";
+		unit <= "0001";
 		PC_in <= opcode (3 downto 0) when jump = '1' else
 				 PC_in + unit;
-		data_in_ff <= '0';
 		
 end architecture;
