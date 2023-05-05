@@ -42,7 +42,10 @@ architecture a_TOPLVL_contr_tb of TOPLVL_contr_tb is
 
         process
         begin  
-               rst <='0';
+            wait for 100 ns;
+               rst <='1';
+            wait for 200 ns;
+                rst <='0';
                 wait;
         end process;
 end architecture;
