@@ -2,7 +2,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-
+--teste commit
 entity un_controle is
     port( instr : in unsigned(17 downto 0);
 		  clk : in std_logic;
