@@ -1,0 +1,94 @@
+Microcontrolador: Freescale (68HC08)
+
+Registradores - Accumulator (8-bit): segura operandos e resultados de operações arithméticas.
+		Index Register (16-bit): permite indexação de um espaço de memoria de 64-Kbits.
+		Stack Pointer (16-bit): contém o endereço de 16-bits da próxima localização da pilha.
+		Program Counter (16-bits): contém o endereço de 16-bits da próxima operação a ser realizada.
+		Condition Code Register (8-bits): Contém a mascara de interrupção e 5 flags que indicam o resultado da ultima operação realizada.
+			[ V | 1 | 1 | H | I | N | Z | C ]
+			V - Overflow flag: 1  indica a presença de overflow de complemento de 2.
+			H - Half-carry flag: 1 indica a ocorrencia de um carry entre os bits 3 e 4 do acumulador.
+			I - Interrupt flag: 1 desabilita interrupções mascaráveis da CPU.
+			N - Negative flag: 1 sinaliza que uma operação arithmetica, logica ou manipulação de dados gerou um resultado negativo.
+			Z - Zero flag: 1 sinaliza que uma operação arithmetica, logica ou manipulação de dados gerou um resultado zero.
+			C - Carry/borrow flag: 1 indica que a operação de adição gerou um carry out do bit 7.
+
+Intruções originais -	
+			ADC opr : add with carry - A <- (A) + (M) + (C)
+			Opcodes:	A9 - operador imediato
+					B9 - operador por indereçamento direto
+
+			ADD opr : add without carry - A <- (A) + (M)
+			Opcodes:	AB - operador imediato
+					BB - Operador por endereçamento direto
+
+			SBC opr : subtract with carry - A <- (A) - (M) - (C)
+			Opcodes:	A2 - operador imediato
+					B2 - Operador por endereçamento direto
+
+			STA opr : Store A in M - M <- (A)
+			Opcodes: 	B7 - operador por endereçamento direto.
+
+			LDA opr : Load A from M - A <- (M)
+			Opcodes:	A6 - operador imediato
+					B6 - Operador por endereçamento direto
+
+			JMP opr : jump - PC <- jump address
+			Opcodes:	BC - Operador por endereçamento direto
+
+			BRA rel : Branch always - PC <- (PC) + 2 + rel
+			Opcodes:	2A - operador relativo ao Byte offset do PC
+
+			BRN rel : Branch never - PC <- (PC) + 2
+			Opcodes:	21 - operador relativo ao Byte offset do PC
+
+			
+			Legenda:	A - Acumulador
+					M - Endereço da memória
+					C - Carry
+
+
+Desvios condicionais -	
+			BLE opr : Branch if Less Than or Equal To (Signed Operands)
+			Opcodes:	93 - operador relativo ao Byte offset do PC
+
+			BLO opr : Branch if Lower (Same as BCS)
+			Opcodes:	25 - operador relativo ao Byte offset do PC
+
+			BLS opr : Branch if Lower or Same
+			Opcodes:	23 - operador relativo ao Byte offset do PC
+
+			BLT opr : Branch if Less Than (Signed Operands)
+			Opcodes:	91 - operador relativo ao Byte offset do PC
+
+			BMC opr : Branch if Interrupt Mask Clear
+			Opcodes:	2C - operador relativo ao Byte offset do PC
+
+			BMI opr : Branch if Minus
+			Opcodes:	2B - operador relativo ao Byte offset do PC
+
+			BMS opr : Branch if Interrupt Mask Set
+			Opcodes:	2D - operador relativo ao Byte offset do PC
+
+			BNE opr : Branch if Not Equal
+			Opcodes:	26 - operador relativo ao Byte offset do PC
+
+			BPL opr : Branch if Plus
+			Opcodes:	26 - operador relativo ao Byte offset do PC
+
+			BRCLR n,opr,rel : Branch if Bit n in M Clear
+			Opcodes :	01, 03, 05, 07, 09, 0B, 0D, 0F - Operador por endereçamento direto e offset relativo à instrução de branch
+
+			BRSET n,opr,rel: : Branch if Bit n in M Set
+			Opcodes :	00, 02, 04, 06, 08, 0A, 0C, 0E - Operador por endereçamento direto e offset relativo à instrução de branch
+
+			BSR rel : branch to subroutine
+			Opcodes: 	AD - operador relativo ao Byte offset do PC
+
+			Compare and branch if equal -	
+							CBEQ opr,rel	-	PC <- (PC) + 3 + rel ? (A) – (M) = $00	-	opcode: 31
+							CBEQA #opr,rel	-	PC <- (PC) + 3 + rel ? (A) – (M) = $00	-	opcode: 41
+							CBEQX #opr,rel	-	PC <- (PC) + 3 + rel ? (X) – (M) = $00	-	opcode: 51
+							CBEQ opr,X+,rel	-	PC <- (PC) + 3 + rel ? (A) – (M) = $00	-	opcode: 61
+							CBEQ X+,rel	-	PC <- (PC) + 2 + rel ? (A) – (M) = $00	-	opcode: 71
+							CBEQ opr,SP,rel	-	PC <- (PC) + 4 + rel ? (A) – (M) = $00	-	opcode: 9E61
