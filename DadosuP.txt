@@ -16,7 +16,7 @@ Registradores - Accumulator (8-bit): segura operandos e resultados de operaçõe
 Intruções originais -	
 			ADC opr : add with carry - A <- (A) + (M) + (C)
 			Opcodes:	A9 - operador imediato
-						B9 - operador por indereçamento direto
+						B9 - operador por endereçamento direto
 
 			ADD opr : add without carry - A <- (A) + (M)
 			Opcodes:	AB - operador imediato
@@ -92,3 +92,10 @@ Desvios condicionais -
 							CBEQ opr,X+,rel	-	PC <- (PC) + 3 + rel ? (A) – (M) = $00	-	opcode: 61
 							CBEQ X+,rel	-	PC <- (PC) + 2 + rel ? (A) – (M) = $00	-	opcode: 71
 							CBEQ opr,SP,rel	-	PC <- (PC) + 4 + rel ? (A) – (M) = $00	-	opcode: 9E61
+
+
+
+ NOSSO OPCODE (4 bits):
+	0011 - JUMP imediato ex: 0011_XXXXXXXXXX_0000 => salta para o endereço 0000
+	0000 - nop (não faz nada)
+	0001 - ADD
