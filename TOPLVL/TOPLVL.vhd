@@ -27,7 +27,8 @@ architecture a_TOPLVL of TOPLVL is
 			write_en: in std_logic;
 			ula_result: out unsigned (15 downto 0);
 			ula_sel: in unsigned (1 downto 0);
-			mux_s2: in unsigned (15 downto 0)
+			mux_s2: in unsigned (15 downto 0);
+			reg1, reg2: out unsigned(15 downto 0)
 		);
 	end component;
 
@@ -41,7 +42,7 @@ architecture a_TOPLVL of TOPLVL is
 				reg1, reg2, wr_reg: out unsigned(2 downto 0);
 				mux_ac_br: out unsigned(0 downto 0);
 				A_wr_en: out std_logic -- Acumulador
-		)
+		);
 	end component;
 	
 	component ACUMULADOR is
@@ -49,22 +50,24 @@ architecture a_TOPLVL of TOPLVL is
 				wr_en     :in std_logic;
 				rst       : in std_logic;
 				data_in   :in unsigned(15 downto 0);
-				data_out  :out unsigned(15 downto 0);
+				data_out  :out unsigned(15 downto 0)
 
  		 );
 end component;
 	signal operacao: unsigned(1 downto 0);
-	signal reg1s, reg2s, wr_rg: unsigned(2 downto 0);
+	signal  wr_rg, reg1t, reg2t: unsigned(2 downto 0);
 	signal ula_br: unsigned(0 downto 0);
-	signal wr_en_br: std_logic;
-	signal mux_s2, data_in_A, data_out_A: unsigned (15 downto 0);
-	signal rom_out: unsigned (17 downto 0);
+	signal wr_en_br, A_wr_en: std_logic;
+	signal mux_s2, data_in_A, data_out_A, reg1s, reg2s: unsigned (15 downto 0);
+	signal rom_out, instr: unsigned (17 downto 0);
 	
 	begin
-		BANCOREG_ULA1: BANCOREG_ULA port map(mux_sel=>ula_br, banco_r1=>reg1s, banco_r2=>reg2s, write_reg=>wr_rg, clock=>clk, reset=>rst, write_en=>wr_en_br, ula_result=>ULA, ula_sel=>operacao, mux_s2=>data_out_A);
-		UC_PC_ROM1: UC_PC_ROM port map(clk=>clk, rst=>rst, wr_en_br=>wr_en_br, data_out_pc=>PC, rom_out=>rom_out, instr_out=>instrucao, op=>operacao, reg1=>reg1, reg2=>reg2, wr_reg=>wr_rg,mux_ac_br=>ula_br);
-		ACUMULADOR1: ACUMULADOR port map(clk=>clk, wr_en=>A_wr_en, rst=>rst, data_in=>data_in_A, data_out=>data_out_A);
+		BANCOREG_ULA1: BANCOREG_ULA port map(mux_sel=>ula_br, banco_r1=>reg1t, banco_r2=>reg2t, write_reg=>wr_rg, clock=>clk, reset=>rst, write_en=>wr_en_br, ula_result=>ULA, ula_sel=>operacao, mux_s2=>data_out_A, reg1=>reg1, reg2=>reg2);
+		UC_PC_ROM1: UC_PC_ROM port map(clk=>clk, rst=>rst, wr_en_br=>wr_en_br, data_out_pc=>PC, rom_out=>rom_out, instr_out=>instr, op=>operacao, reg1=>reg1t, reg2=>reg2t, wr_reg=>wr_rg,mux_ac_br=>ula_br, A_wr_en => A_wr_en);
+		ACUMULADOR1: ACUMULADOR port map(clk=>clk, wr_en=>A_wr_en, rst=>rst, data_in=>ULA, data_out=>data_out_A);
+		instrucao <=instr;
+
 		reg1<=reg1s;
 		reg2<=reg2s;
-
+	
 end architecture;

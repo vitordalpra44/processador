@@ -13,7 +13,8 @@ entity BANCOREG_ULA is
 		write_en: in std_logic;
 		ula_result: out unsigned (15 downto 0);
 		ula_sel: in unsigned (1 downto 0);
-		mux_s2: in unsigned (15 downto 0)
+		mux_s2: in unsigned (15 downto 0);
+		reg1, reg2: out unsigned(15 downto 0)
     );
 end entity;
 
@@ -56,4 +57,6 @@ architecture a_BANCOREG_ULA of BANCOREG_ULA is
 		BANCOREG0: BANCOREG port map (reg1=> banco_r1, reg2=> banco_r2, dado=> ula_out, wr_reg=> write_reg, wr_en=> write_en, clk=> clock, rst=> reset, read_data1=> read_d1, read_data2=> read_d2);
 		MUX0: MUX2x1 port map (sinal1=> read_d2, sinal2=> mux_s2, sel=> mux_sel, saida=> mux_out);
 		ula_result<=ula_out;
+		reg1 <= read_d1;
+		reg2 <= read_d2;
 end architecture;

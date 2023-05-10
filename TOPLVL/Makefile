@@ -10,9 +10,12 @@ all:
 	@ghdl -a BANCOREG.vhd
 	@ghdl -a BANCOREG_ULA.vhd
 	@ghdl -a FFT.vhd
-	@ghdl -a UC.vhd
-	@ghdl -a UC_PC_ROM.vhd
-	@ghdl -a REG_INSTR.vhd
-	@ghdl -a ACUMULADOR.vhd
 	@ghdl -a MAQ_EST.vhd
+	@ghdl -a UC.vhd
+	@ghdl -a REG_INSTR.vhd
+	@ghdl -a UC_PC_ROM.vhd
+	@ghdl -a ACUMULADOR.vhd
 	@ghdl -a TOPLVL.vhd
+	@ghdl -a TOPLVL_tb.vhd
+	@ghdl -e TOPLVL_tb
+	@ghdl -r TOPLVL_tb --wave=TOPLVL_tb.ghw
