@@ -16,7 +16,7 @@ end entity;
 architecture a_UC of UC is
 
 	signal opcode : unsigned (3 downto 0);
-	signal state : unsigned(1 downto 0);
+
 
 	begin
 
