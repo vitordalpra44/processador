@@ -16,22 +16,22 @@ Registradores - Accumulator (8-bit): segura operandos e resultados de operaçõe
 Intruções originais -	
 			ADC opr : add with carry - A <- (A) + (M) + (C)
 			Opcodes:	A9 - operador imediato
-					B9 - operador por indereçamento direto
+						B9 - operador por indereçamento direto
 
 			ADD opr : add without carry - A <- (A) + (M)
 			Opcodes:	AB - operador imediato
-					BB - Operador por endereçamento direto
+						BB - Operador por endereçamento direto
 
 			SBC opr : subtract with carry - A <- (A) - (M) - (C)
 			Opcodes:	A2 - operador imediato
-					B2 - Operador por endereçamento direto
+						B2 - Operador por endereçamento direto
 
 			STA opr : Store A in M - M <- (A)
 			Opcodes: 	B7 - operador por endereçamento direto.
 
 			LDA opr : Load A from M - A <- (M)
 			Opcodes:	A6 - operador imediato
-					B6 - Operador por endereçamento direto
+						B6 - Operador por endereçamento direto
 
 			JMP opr : jump - PC <- jump address
 			Opcodes:	BC - Operador por endereçamento direto

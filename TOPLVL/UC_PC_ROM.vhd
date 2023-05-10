@@ -7,7 +7,10 @@ entity UC_PC_ROM is
     port( clk_pc: in std_logic;
 		  rst : in std_logic;
 		  clk_contrl: in std_logic;
-		  rom_out :out unsigned(17 downto 0)
+		  rom_out :out unsigned(17 downto 0);
+		  op: out unsigned(1 downto 0);
+		  reg1, reg2: out unsigned(2 downto 0);
+		  mux_ula_br: out unsigned(0 downto 0)
 	);
 end entity;
 
@@ -47,7 +50,7 @@ architecture a_UC_PC_ROM of UC_PC_ROM is
 		PCROM0 : PCROM port map (clk_pr=>clk_pc, wr_en=> enable, rst=>rst, data_in_pc=> PC_in, data_out_rom=> instru, data_out_pc=>PC_out);
 		enable <= '1';
 		rom_out <= instru;
-
+		op <= "00";
 		PC_in <= 	instru (3 downto 0) when jump = '1' else
 					PC_out + "0001";
 
