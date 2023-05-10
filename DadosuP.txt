@@ -98,4 +98,4 @@ Desvios condicionais -
  NOSSO OPCODE (4 bits):
 	0011 - JUMP imediato ex: 0011_XXXXXXXXXX_0000 => salta para o endereço 0000
 	0000 - nop (não faz nada)
-	0001 - ADD
+	0001 - ADD acumulador+reg1 ex: 0001_xxxxxxxxxxx_000; => soma acumulador + reg 000 e guarda no acumulador
