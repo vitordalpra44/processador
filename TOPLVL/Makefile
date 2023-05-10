@@ -13,4 +13,6 @@ all:
 	@ghdl -a UC.vhd
 	@ghdl -a UC_PC_ROM.vhd
 	@ghdl -a REG_INSTR.vhd
+	@ghdl -a ACUMULADOR.vhd
+	@ghdl -a MAQ_EST.vhd
 	@ghdl -a TOPLVL.vhd
