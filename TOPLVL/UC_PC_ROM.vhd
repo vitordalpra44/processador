@@ -58,6 +58,7 @@ architecture a_UC_PC_ROM of UC_PC_ROM is
 	signal enable_PCROM, wr_en_reg_instr, fetch_en : std_logic;
 	signal up_pc : std_logic;
 	signal estado: unsigned(1 downto 0);
+	signal opcode: unsgined(3 downto 0);
 
 	begin
 		CONTROLE0 : UC port map (instr_in=> instru, clk=> clk, rst=> rst, state=>estado,fetch_en=> fetch_en, wr_en_reg=>wr_en_reg_instr, update_pc=>up_pc);
@@ -76,11 +77,15 @@ architecture a_UC_PC_ROM of UC_PC_ROM is
 					PC_out + "0001";
 
 		--DESCREVER A ACÃO DE CADA OPCODE...
-
+		opcode <= instru_reg_instr(17 downto 14);
+		reg1<= instru_reg_instr(2 downto 0);
+		reg2<=intru_reg_instr(5 downto 3);
 	--JUMP : FORMATO "0011"_"XXXXXXXXXX"_"MMMM" em que MMMM é o endereço de memória para onde irá saltar
-		jump <= '1' when instru_reg_instr(17 downto 14) = "0011" else
+		jump <= '1' when opcode = "0011" else
 			0;
-
-		op <= "00" when instru_reg_instr()
+		
+		op <= "00" when opcode = "0001" else
+			"01";
+		
 
 end architecture;
