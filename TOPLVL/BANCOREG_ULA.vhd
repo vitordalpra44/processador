@@ -8,9 +8,12 @@ entity BANCOREG_ULA is
 		banco_r1: in unsigned (2 downto 0);
 		banco_r2: in unsigned (2 downto 0);
 		write_reg: in unsigned (2 downto 0);
+		ULA_load: in std_logic;
 		clock: in std_logic;
 		reset: in std_logic;
 		write_en: in std_logic;
+		dado_in: in unsigned (15 downto 0);
+		ULA_in: in unsigned (15 downto 0);
 		ula_result: out unsigned (15 downto 0);
 		ula_sel: in unsigned (1 downto 0);
 		mux_s2: in unsigned (15 downto 0);
@@ -50,13 +53,16 @@ architecture a_BANCOREG_ULA of BANCOREG_ULA is
 			);
 	end component;
 	
-	signal ula_out, read_d1, read_d2, mux_out: unsigned (15 downto 0);
+	signal read_d1, read_d2, mux_out, ULA_0: unsigned (15 downto 0);
 	
 	begin
-		ULA0: ULA port map (val0 => read_d1, val1=> mux_out, sel => ula_sel, saida=> ula_out);
-		BANCOREG0: BANCOREG port map (reg1=> banco_r1, reg2=> banco_r2, dado=> ula_out, wr_reg=> write_reg, wr_en=> write_en, clk=> clock, rst=> reset, read_data1=> read_d1, read_data2=> read_d2);
-		MUX0: MUX2x1 port map (sinal1=> read_d2, sinal2=> mux_s2, sel=> mux_sel, saida=> mux_out);
-		ula_result<=ula_out;
+		ULA0: ULA port map (val0 => ULA_0, val1=> mux_out, sel => ula_sel, saida=> ula_result);
+		BANCOREG0: BANCOREG port map (reg1=> banco_r1, reg2=> banco_r2, dado=> dado_in, wr_reg=> write_reg, wr_en=> write_en, clk=> clock, rst=> reset, read_data1=> read_d1, read_data2=> read_d2);
+		MUX0: MUX2x1 port map (sinal1=> read_d1, sinal2=> mux_s2, sel=> mux_sel, saida=> mux_out);
 		reg1 <= read_d1;
 		reg2 <= read_d2;
+		
+		ULA_0 <= ULA_in when ULA_load = '0' else 
+			"0000000000000000";
+		
 end architecture;
