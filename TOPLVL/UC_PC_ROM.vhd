@@ -6,8 +6,11 @@ use ieee.numeric_std.all;
 entity UC_PC_ROM is
     port( 	clk: in std_logic;
 			rst : in std_logic;
-			wr_en_br: in std_logic;
+			wr_en_br: out std_logic;
+			ULA_load: out std_logic;
+			immediate: out unsigned (15 downto 0);
 			data_out_pc: out unsigned(3 downto 0);
+			rst_A: out std_logic;
 			rom_out, instr_out :out unsigned(17 downto 0);
 			op: out unsigned(1 downto 0); --operacao da ula selecionada
 			reg1, reg2, wr_reg: out unsigned(2 downto 0);
@@ -84,17 +87,47 @@ architecture a_UC_PC_ROM of UC_PC_ROM is
 		opcode <= instru_reg_instr(17 downto 14);
 		reg1<= instru_reg_instr(2 downto 0);
 		reg2<=instru_reg_instr(5 downto 3);
+		immediate<= instru_reg_instr (15 downto 0);
 		wr_reg<=instru_reg_instr(8 downto 6);
 	--JUMP : FORMATO "0011"_"XXXXXXXXXX"_"MMMM" em que MMMM é o endereço de memória para onde irá saltar
 		jump <= '1' when opcode = "0011" else
 			'0';
 		
+		rst_A <= '1' when rst = '1' else
+				'1' when opcode = "1000" else
+			'0';
+		
 		op <= "00" when opcode = "0001" else
-			"01";
-		mux_ac_br <= "1" when opcode = "0001" else -- não passa o reg2 e sim o acumulador
-			"0";
+			"00" when opcode = "0001" else
+			"01" when opcode = "1011" else
+			"00" when opcode = "0101" else
+			"00";
+		
+		mux_ac_br <= "0" when opcode = "0001" else -- passa o reg1
+					"1" when opcode = "0001" else
+					"1" when opcode = "1011" else
+					"1" when opcode = "0101" else
+					"0";
+			
 		
 		A_wr_en <= '1' when opcode = "0001" else
+					'1' when opcode = "0010" else
+					'1' when opcode = "1011" else
+					'1' when opcode = "0101" else 
 			'0';
+
+
+
+		ULA_load <= '1' when opcode = "0101" else 
+			'0';
+
+		wr_reg <= instru_reg_instr (2 downto 0) when opcode = "0100" else
+			"000";
+		
+		wr_en_br <= '1' when opcode = "0100" else
+			'0';
+			
+		
+
 
 end architecture;
