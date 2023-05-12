@@ -39,7 +39,7 @@ architecture a_BANCOREG_ULA of BANCOREG_ULA is
 	signal read_data_s: unsigned (15 downto 0);
 	
 	begin
-		ULA0: ULA port map (val0 => reg_out, val1=> acumulador, mux_operation => mux_operation, saida=> ula_result);
+		ULA0: ULA port map (val0 => read_data_s, val1=> acumulador, mux_operation => mux_operation, saida=> ula_result);
 		BANCOREG0: BANCOREG port map (reg=> reg, dado=> acumulador, wr_en=> wr_en, clk=> clk, rst=> rst, read_data=> read_data_s);
 		read_data<= read_data_s;
 

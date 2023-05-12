@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 entity ROM is
     port(   clk: in std_logic;
-            endereco : in unsigned(7 downto 0);
+            endereco : in unsigned(6 downto 0);
             dado: out unsigned(17 downto 0)
     );
 end entity;

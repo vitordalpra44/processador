@@ -16,6 +16,3 @@ all:
 	@ghdl -a UC_PC_ROM.vhd
 	@ghdl -a ACUMULADOR.vhd
 	@ghdl -a TOPLVL.vhd
-	@ghdl -a TOPLVL_tb.vhd
-	@ghdl -e TOPLVL_tb
-	@ghdl -r TOPLVL_tb --wave=TOPLVL_tb.ghw

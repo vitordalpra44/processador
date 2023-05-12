@@ -10,7 +10,7 @@ entity TOPLVL is
 		  	PC 			:out unsigned(7 downto 0);
 		  	instruction	:out unsigned(17 downto 0);
 		  	reg			:out unsigned(15 downto 0);
-			acumulador	:out unsigned(15 downto 0);
+			acumulador_out	:out unsigned(15 downto 0);
 		 	ULA			:out unsigned(15 downto 0)
 	);
 end entity;
@@ -59,7 +59,7 @@ end component;
 	begin
 		BANCOREG_ULA1: BANCOREG_ULA port map(reg=>reg_s, clk=>clk, rst=>rst, wr_en=>wr_en_br_s, ula_result=>ula_result_s, mux_operation=>mux_operation_s, acumulador=> acumulador_s, read_data=>reg);
 		UC_PC_ROM1: UC_PC_ROM port map(clk=>clk, rst=>rst, wr_en_br=>wr_en_br_s, wr_en_acumulador=> wr_en_acumulador_s, PC=> PC, state=>state_s, instruction_out => instruction, mux_operation=>mux_operation_s, reg=>reg_s);
-		ACUMULADOR1: ACUMULADOR port map(clk=>clk, wr_en=>wr_en_acumulador_s, rst=>rst, data_in=>ula_result_s, data_out=>acumulador);
+		ACUMULADOR1: ACUMULADOR port map(clk=>clk, wr_en=>wr_en_acumulador_s, rst=>rst, data_in=>ula_result_s, data_out=>acumulador_out);
 		
 
 	

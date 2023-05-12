@@ -35,6 +35,7 @@ architecture a_UC of UC is
 						"11" when instruction(17 downto 14) = "0101" else -- opcode comparacao
 						"00";
 		wr_en_acumulador <='1' when instruction(17 downto 14) = "0010" else
+		'0';
 		
 
 end architecture;
