@@ -7,46 +7,47 @@ entity UC_PC_ROM is
     port( 	clk: in std_logic;
 			rst : in std_logic;
 			wr_en_br: out std_logic;
-			ULA_load: out std_logic;
-			immediate: out unsigned (15 downto 0);
-			data_out_pc: out unsigned(3 downto 0);
-			rst_A: out std_logic;
-			rom_out, instr_out :out unsigned(17 downto 0);
+			PC: out unsigned(3 downto 0);
+			state: out unsigned(1 downto 0);
+			instr_out :out unsigned(17 downto 0);
 			op: out unsigned(1 downto 0); --operacao da ula selecionada
-			reg1, reg2, wr_reg: out unsigned(2 downto 0);
-			mux_ac_br: out unsigned(0 downto 0); --mux que seleciona ou ula ou banco reg para 2° entrada operacao
-			A_wr_en: out std_logic -- Acumulador
+			reg: out unsigned(2 downto 0);
+			wr_en_acumulador: out std_logic -- Acumulador
 	);
 end entity;
 
 architecture a_UC_PC_ROM of UC_PC_ROM is
 
     component UC is
-		port( 	instr_in: in unsigned(17 downto 0);
-				clk : in std_logic;
+		port( 	clk : in std_logic;
 				rst: in std_logic;
-				state: in unsigned(1 downto 0);
-				fetch_en, wr_en_reg : out std_logic;
-				update_pc : out std_logic
+	  			instruction: in unsigned (17 downto 0);
+	  			state: in unsigned(1 downto 0);
+				fetch_en : out std_logic;
+	 			wr_en_reg : out std_logic;
+				update_pc : out std_logic;
+	  			wr_en_banco_reg: out std_logic;
+	  			mux_operation: out unsigned(1 downto 0);
+	  			wr_en_acumulador: out std_logic
 			);
     end component;
 	
 	component PCROM is
-       port( clk_pr       :in std_logic;
-          wr_en     :in std_logic;
-		  rst		:in std_logic;
-          data_in_pc   :in unsigned(3 downto 0);
-          data_out_rom  :out unsigned(17 downto 0);
-		  data_out_pc : out unsigned(3 downto 0)
+       port( 	clk_pr  :in std_logic;
+				wr_en   :in std_logic;
+				rst		:in std_logic;
+				data_in_pc   :in unsigned(7 downto 0);
+				data_out_rom :out unsigned(17 downto 0);
+				data_out_pc  :out unsigned(7 downto 0)
     	);
     end component;
 	
 	component REG_INSTR is
-		port( clk       :in std_logic;
-          wr_en     :in std_logic;
-          rst       : in std_logic;
-          data_in   :in unsigned(17 downto 0);
-          data_out  :out unsigned(17 downto 0)
+		port( 	clk       :in std_logic;
+          		wr_en     :in std_logic;
+          		rst       : in std_logic;
+          		data_in   :in unsigned(17 downto 0);
+          		data_out  :out unsigned(17 downto 0)
     	);
 	end component;
 	
@@ -57,16 +58,16 @@ architecture a_UC_PC_ROM of UC_PC_ROM is
 	end component;
 	
 		
-	signal instru, instru_reg_instr : unsigned (17 downto 0);
-	signal jump : std_logic;
-	signal PC_in, PC_out: unsigned (3 downto 0);
+	signal instru_reg_instr : unsigned (17 downto 0);
+	signal wr_en_br_s : std_logic;
+	signal PC_in, PC_out: unsigned (7 downto 0);
 	signal enable_PCROM, wr_en_reg_instr, fetch_en : std_logic;
 	signal up_pc : std_logic;
 	signal estado: unsigned(1 downto 0);
 	signal opcode: unsigned(3 downto 0);
 
 	begin
-		CONTROLE0 : UC port map (instr_in=> instru, clk=> clk, rst=> rst, state=>estado,fetch_en=> fetch_en, wr_en_reg=>wr_en_reg_instr, update_pc=>up_pc);
+		CONTROLE0 : UC port map (clk=> clk, rst=> rst, instruction=>instru_reg_instr,state=>estado,fetch_en=> fetch_en, wr_en_reg=>wr_en_reg_instr, update_pc=>up_pc, wr_en_br=>wr_en_br_s);
 		PCROM0 : PCROM port map (clk_pr=>clk, wr_en=> enable_PCROM, rst=>rst, data_in_pc=> PC_in, data_out_rom=> instru, data_out_pc=>PC_out);
 		REG_INSTR1: REG_INSTR port map(clk=>clk, wr_en=>wr_en_reg_instr, rst=>rst, data_in=>instru, data_out=>instru_reg_instr);
 		MAQ_EST1: MAQ_EST port map(clk=>clk, rst=>rst, estado=>estado);
@@ -76,58 +77,10 @@ architecture a_UC_PC_ROM of UC_PC_ROM is
 		enable_PCROM <= '1'; 
 -----------------------------------------
 		instr_out <= instru_reg_instr;
-
-		rom_out <= instru;
 		data_out_pc <= PC_out;
-
-		PC_in <= 	instru_reg_instr (3 downto 0) when jump = '1' else
+		PC_in <= 	instru_reg_instr (6 downto 0) when jump = '1' else
 					PC_out + "0001";
 
-		--DESCREVER A ACaO DE CADA OPCODE...
-		opcode <= instru_reg_instr(17 downto 14);
-		reg1<= instru_reg_instr(2 downto 0);
-		reg2<=instru_reg_instr(5 downto 3);
-		immediate<= instru_reg_instr (15 downto 0);
-		wr_reg<=instru_reg_instr(8 downto 6);
-	--JUMP : FORMATO "0011"_"XXXXXXXXXX"_"MMMM" em que MMMM é o endereço de memória para onde irá saltar
-		jump <= '1' when opcode = "0011" else
-			'0';
-		
-		rst_A <= '1' when rst = '1' else
-				'1' when opcode = "1000" else
-			'0';
-		
-		op <= "00" when opcode = "0001" else
-			"00" when opcode = "0001" else
-			"01" when opcode = "1011" else
-			"00" when opcode = "0101" else
-			"00";
-		
-		mux_ac_br <= "0" when opcode = "0001" else -- passa o reg1
-					"1" when opcode = "0001" else
-					"1" when opcode = "1011" else
-					"1" when opcode = "0101" else
-					"0";
-			
-		
-		A_wr_en <= '1' when opcode = "0001" else
-					'1' when opcode = "0010" else
-					'1' when opcode = "1011" else
-					'1' when opcode = "0101" else 
-			'0';
-
-
-
-		ULA_load <= '1' when opcode = "0101" else 
-			'0';
-
-		wr_reg <= instru_reg_instr (2 downto 0) when opcode = "0100" else
-			"000";
-		
-		wr_en_br <= '1' when opcode = "0100" else
-			'0';
-			
-		
 
 
 end architecture;

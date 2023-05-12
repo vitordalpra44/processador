@@ -96,6 +96,13 @@ Desvios condicionais -
 
 
  NOSSO OPCODE (4 bits):
-	0011 - JUMP imediato ex: 0011_XXXXXXXXXX_0000 => salta para o endereço 0000
-	0000 - nop (não faz nada)
-	0001 - ADD acumulador+reg1 ex: 0001_xxxxxxxxxxx_000; => soma acumulador + reg 000 e guarda no acumulador
+	0000 - nop (não faz nada);
+	0001 - soma AC <= REG + AC  		formato: 0001_xxxxxxxxxxx_REG
+	0010 - subtracao AC <=  AC - REG 	formato: 0010_xxxxxxxxxxx_REG
+	0011 - multiplicacao AC <= AC*REG 	formato: 0011_xxxxxxxxxxx_REG
+	0100 - comparacao AC <= AC & REG  	formato: 0100_xxxxxxxxxxx_REG
+	0101 - salvar AC no BR  			formato: 0101_xxxxxxxxxxx_REG
+	0110 - jump imediato  	 			formato: 0110_xxxxxxxxxx_MMMM
+	0111 - jump AC (4 LSB)  			formato: 0111_xxxxxxxxxxxxxx
+	1000 - load ROM no AC 	 			formato: 1000_xxxxxxxxxx_MMMM
+	

@@ -6,13 +6,13 @@ entity PC is
     port( clk       :in std_logic;
           wr_en     :in std_logic;
           rst       : in std_logic;
-          data_in   :in unsigned(3 downto 0);
-          data_out  :out unsigned(3 downto 0)
+          data_in   :in unsigned(7 downto 0);
+          data_out  :out unsigned(7 downto 0)
     );
 end entity;
 
 architecture a_PC of PC is
-    signal registro: unsigned(3 downto 0);
+    signal registro: unsigned(7 downto 0);
 begin
     process(clk, wr_en, rst)
     begin
