@@ -11,7 +11,7 @@ entity UC is
 		  	fetch : out std_logic;
 			execute : out std_logic;
 		  	decode : out std_logic;
-			wr_en_banco_reg: out std_logic;
+			wr_en_br: out std_logic;
 			mux_operation: out unsigned(1 downto 0);
 			wr_en_acumulador: out std_logic
     );
@@ -27,7 +27,7 @@ architecture a_UC of UC is
 
 		execute <= '1' when state = "10" else
 				  '0';
-		wr_en_banco <='1' when instruction(17 downto 14) = "0001" else
+		wr_en_br <='1' when instruction(17 downto 14) = "0001" else
 			'0';
 		mux_operation <="00" when instruction(17 downto 14) = "0010" else --opcode de soma
 						"01" when instruction(17 downto 14) = "0011" else --opcode subtraçao

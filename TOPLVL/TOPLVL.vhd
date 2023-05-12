@@ -5,13 +5,13 @@ use ieee.numeric_std.all;
 
 
 entity TOPLVL is
-    port( clk: in std_logic;
-		  rst : in std_logic;
-		  PC :out unsigned(3 downto 0);
-		  instrucao: out unsigned(17 downto 0);
-		  reg1: out unsigned(15 downto 0);
-		  reg2: out unsigned(15 downto 0);
-		  ULA: out unsigned(15 downto 0)
+    port( 	clk			:in std_logic;
+		  	rst 		:in std_logic;
+		  	PC 			:out unsigned(7 downto 0);
+		  	instruction	:out unsigned(17 downto 0);
+		  	reg			:out unsigned(15 downto 0);
+			acumulador	:out unsigned(15 downto 0);
+		 	ULA			:out unsigned(15 downto 0)
 	);
 end entity;
 architecture a_TOPLVL of TOPLVL is
@@ -23,26 +23,23 @@ architecture a_TOPLVL of TOPLVL is
 		rst: in std_logic;
 		wr_en: in std_logic;
 		ula_result: out unsigned (15 downto 0);
-		ula_sel: in unsigned (1 downto 0);
+		mux_operation: in unsigned (1 downto 0);
 		acumulador: in unsigned (15 downto 0);
-		reg_out: out unsigned(15 downto 0)
+		read_data: out unsigned(15 downto 0)
 		);
 	end component;
 
 	component UC_PC_ROM is
-		port( 	clk: in std_logic;
-			rst : in std_logic;
-			wr_en_br: out std_logic;
-			ULA_load: out std_logic;
-			immediate: out unsigned (15 downto 0);
-			data_out_pc: out unsigned(3 downto 0);
-			rst_A: out std_logic;
-			rom_out, instr_out :out unsigned(17 downto 0);
-			op: out unsigned(1 downto 0); --operacao da ula selecionada
-			reg1, reg2, wr_reg: out unsigned(2 downto 0);
-			mux_ac_br: out unsigned(0 downto 0); --mux que seleciona ou ula ou banco reg para 2° entrada operacao
-			A_wr_en: out std_logic -- Acumulador
-	);
+		port( 	clk					:in std_logic;
+				rst 				:in std_logic;
+				wr_en_br 			:out std_logic;
+				wr_en_acumulador	:out std_logic;
+				PC					:out unsigned(7 downto 0); -- Saida do PC
+				state				:out unsigned(1 downto 0);
+				instruction_out 	:out unsigned(17 downto 0);
+				mux_operation		:out unsigned(1 downto 0); --operacao da ula selecionada
+				reg					:out unsigned(2 downto 0) -- mostrar no top lvl para acessar o br			
+			);
 	end component;
 	
 	component ACUMULADOR is
@@ -54,20 +51,16 @@ architecture a_TOPLVL of TOPLVL is
 
  		 );
 end component;
-	signal operacao: unsigned(1 downto 0);
-	signal  wr_rg, reg1t, reg2t: unsigned(2 downto 0);
-	signal ula_br: unsigned(0 downto 0);
-	signal wr_en_br_s, A_wr_en, rst_A, ula_l: std_logic;
-	signal immediate, mux_s2, data_in_A, data_out_A, reg1s, reg2s, ULA_res: unsigned (15 downto 0);
-	signal rom_out, instr: unsigned (17 downto 0);
-	
-	begin
-		BANCOREG_ULA1: BANCOREG_ULA port map(reg=>reg1t, clk=>clk, rst=>rst, wr_en=>wr_en_br_s, ula_result=>ULA_res, ula_sel=>operacao, acumulador=> immediate, reg_out=>reg1);
-		UC_PC_ROM1: UC_PC_ROM port map(clk=>clk, rst=>rst, wr_en_br=>wr_en_br_s, ULA_load=> ula_l, immediate=> immediate, data_out_pc=>PC, rst_A=>rst_A, rom_out=>rom_out, instr_out=>instr, op=>operacao, reg1=>reg1t, reg2=>reg2t, wr_reg=>wr_rg,mux_ac_br=>ula_br, A_wr_en => A_wr_en);
-		ACUMULADOR1: ACUMULADOR port map(clk=>clk, wr_en=>A_wr_en, rst=>rst_A, data_in=>ULA_res, data_out=>data_out_A);
-		instrucao <=instr;
+	signal mux_operation_s, state_s: unsigned(1 downto 0);
+	signal reg_s: unsigned(2 downto 0);
+	signal wr_en_br_s, wr_en_acumulador_s: std_logic;
+	signal ula_result_s, acumulador_s: unsigned (15 downto 0);
 
-		reg1<=reg1s;
+	begin
+		BANCOREG_ULA1: BANCOREG_ULA port map(reg=>reg_s, clk=>clk, rst=>rst, wr_en=>wr_en_br_s, ula_result=>ula_result_s, mux_operation=>mux_operation_s, acumulador=> acumulador_s, read_data=>reg);
+		UC_PC_ROM1: UC_PC_ROM port map(clk=>clk, rst=>rst, wr_en_br=>wr_en_br_s, wr_en_acumulador=> wr_en_acumulador_s, PC=> PC, state=>state_s, instruction_out => instruction, mux_operation=>mux_operation_s, reg=>reg_s);
+		ACUMULADOR1: ACUMULADOR port map(clk=>clk, wr_en=>wr_en_acumulador_s, rst=>rst, data_in=>ula_result_s, data_out=>acumulador);
+		
 
 	
 end architecture;

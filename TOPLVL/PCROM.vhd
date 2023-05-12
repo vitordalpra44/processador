@@ -4,11 +4,11 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity PCROM is
-    port( clk_pr     :in std_logic;
+    port( clk     :in std_logic;
           wr_en     :in std_logic;
           rst       :in std_logic;
           data_in_pc   :in unsigned(7 downto 0);
-          data_out_rom  :out unsigned(17 downto 0);
+          data_out_rom : out unsigned(17 downto 0);
           data_out_pc : out unsigned(7 downto 0) -- usado para fazer a adição de um endereço
     );
 end entity;
