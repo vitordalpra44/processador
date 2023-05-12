@@ -70,7 +70,7 @@ architecture a_UC_PC_ROM of UC_PC_ROM is
 		PCROM0 : PCROM port map (clk=>clk, wr_en=> wr_en_pcrom_s, rst=>rst, data_in_pc=> PC_in, data_out_rom=> instruction_rom_s,data_out_pc=>PC_out);
 		REG_INSTR1: REG_INSTR port map(clk=>clk, wr_en=>wr_en_reg_instr_s, rst=>rst, data_in=>instruction_rom_s, data_out=>instruction_s);
 		MAQ_EST1: MAQ_EST port map(clk=>clk, rst=>rst, estado=>state);
-		--instru_reg_instr é a instrução que vamos dar execute de fato, instru é a que daremos fetch...
+		
 		instruction_out <= instruction_s;
 		
 		wr_en_pcrom_s <= '1'; 
