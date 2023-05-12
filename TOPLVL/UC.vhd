@@ -27,9 +27,11 @@ architecture a_UC of UC is
 
 		execute <= '1' when state = "10" else
 				  '0';
+
+
 		wr_en_br <='1' when instruction(17 downto 14) = "0001" else
 			'0';
-		mux_operation <="00" when instruction(17 downto 14) = "0010" else --opcode de soma
+		mux_operation <="00" when instruction(17 downto 14) = "0001" else --opcode de soma
 						"01" when instruction(17 downto 14) = "0011" else --opcode subtraçao
 						"10" when instruction(17 downto 14) = "0100" else -- opcode multiplicacao
 						"11" when instruction(17 downto 14) = "0101" else -- opcode comparacao

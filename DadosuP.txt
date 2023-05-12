@@ -102,7 +102,7 @@ Desvios condicionais -
 	0011 - multiplicacao AC <= AC*REG 	formato: 0011_xxxxxxxxxxx_REG
 	0100 - comparacao AC <= AC & REG  	formato: 0100_xxxxxxxxxxx_REG
 	0101 - salvar AC no BR  			formato: 0101_xxxxxxxxxxx_REG
-	0110 - jump imediato  	 			formato: 0110_xxxxxxxxxx_MMMM
-	0111 - jump AC (4 LSB)  			formato: 0111_xxxxxxxxxxxxxx
-	1000 - load ROM no AC 	 			formato: 1000_xxxxxxxxxx_MMMM
-	
+	0110 - jump imediato  	 			formato: 0110_xxxxxxx_MMMMMMM
+	0111 - jump AC (7 LSB)  			formato: 0111_xxxxxxxxxxxxxx
+	1000 - load imediato no AC  (16 LSB)formato: 1000_MMMMMMMMMMMMMM
+

@@ -79,7 +79,7 @@ architecture a_UC_PC_ROM of UC_PC_ROM is
 
 		PC_in <= 	instruction_s (6 downto 0) when jump_s = '1' else
 					PC_out + "0000001";
-
+		
 
 
 end architecture;
