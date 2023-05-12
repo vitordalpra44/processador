@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 entity REG_INSTR is
     port( clk       :in std_logic;
           wr_en     :in std_logic;
-          rst       : in std_logic;
+          rst       :in std_logic;
           data_in   :in unsigned(17 downto 0);
           data_out  :out unsigned(17 downto 0)
     );

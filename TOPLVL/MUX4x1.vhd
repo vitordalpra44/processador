@@ -3,12 +3,12 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity MUX4x1 is
-    port( ope1: in unsigned(15 downto 0);
-          ope2: in unsigned(15 downto 0);
-          ope3: in unsigned(15 downto 0);
-          ope4: in unsigned(15 downto 0); 
-          sel : in unsigned(1 downto 0);
-          saida: out unsigned(15 downto 0));
+    port( ope1  :in unsigned(15 downto 0);
+          ope2  :in unsigned(15 downto 0);
+          ope3  :in unsigned(15 downto 0);
+          ope4  :in unsigned(15 downto 0); 
+          sel   :in unsigned(1 downto 0);
+          saida :out unsigned(15 downto 0));
 end entity;
 
 

@@ -3,10 +3,10 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity MUX2x1 is
-    port( sinal1: in unsigned(15 downto 0);
-          sinal2: in unsigned(15 downto 0);
-		  sel:  in unsigned;
-          saida: out unsigned(15 downto 0)
+    port( sinal1    :in unsigned(15 downto 0);
+          sinal2    :in unsigned(15 downto 0);
+		  sel       :in unsigned;
+          saida     :out unsigned(15 downto 0)
 		);
 end entity;
 

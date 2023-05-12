@@ -3,12 +3,12 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity OPERACOES is
-    port( val0: in unsigned(15 downto 0);
-          val1: in unsigned(15 downto 0);
-          soma: out unsigned(15 downto 0);
-          subtracao: out unsigned(15 downto 0); 
-          maior_que : out unsigned(15 downto 0);
-          multiplicacao: out unsigned(15 downto 0));
+    port( val0          :in unsigned(15 downto 0);
+          val1          :in unsigned(15 downto 0);
+          soma          :out unsigned(15 downto 0);
+          subtracao     :out unsigned(15 downto 0); 
+          maior_que     :out unsigned(15 downto 0);
+          multiplicacao :out unsigned(15 downto 0));
 
 end entity;
 

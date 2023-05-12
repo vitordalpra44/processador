@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 entity PC is
     port( clk       :in std_logic;
           wr_en     :in std_logic;
-          rst       : in std_logic;
+          rst       :in std_logic;
           data_in   :in unsigned(6 downto 0);
           data_out  :out unsigned(6 downto 0)
     );

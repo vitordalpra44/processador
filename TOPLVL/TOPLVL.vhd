@@ -1,31 +1,31 @@
---ULA + BANCOREG + PC + ROM + UNIDADE DE CONTROLE + REG_INSTR 
+--ULA + BANCOREG + PC + ROM + UNIDADE DE CONTROLE + REG_INSTR  + ACUMULADOR
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 
 entity TOPLVL is
-    port( 	clk			:in std_logic;
-		  	rst 		:in std_logic;
-		  	PC 			:out unsigned(7 downto 0);
-		  	instruction	:out unsigned(17 downto 0);
-		  	reg			:out unsigned(15 downto 0);
-			acumulador_out	:out unsigned(15 downto 0);
-		 	ULA			:out unsigned(15 downto 0)
+    port( 	clk					:in std_logic;
+		  	rst 				:in std_logic;
+		  	PC 					:out unsigned(7 downto 0);
+		  	instruction			:out unsigned(17 downto 0);
+		  	reg					:out unsigned(15 downto 0);
+			acumulador_out		:out unsigned(15 downto 0);
+		 	ULA					:out unsigned(15 downto 0)
 	);
 end entity;
 architecture a_TOPLVL of TOPLVL is
 
 	component BANCOREG_ULA is
 		port(
-		reg: in unsigned (2 downto 0);
-		clk: in std_logic;
-		rst: in std_logic;
-		wr_en: in std_logic;
-		ula_result: out unsigned (15 downto 0);
-		mux_operation: in unsigned (1 downto 0);
-		acumulador: in unsigned (15 downto 0);
-		read_data: out unsigned(15 downto 0)
+				reg				:in unsigned (2 downto 0);
+				clk				:in std_logic;
+				rst				:in std_logic;
+				wr_en			:in std_logic;
+				ula_result		:out unsigned (15 downto 0);
+				mux_operation	:in unsigned (1 downto 0);
+				acumulador		:in unsigned (15 downto 0);
+				read_data		:out unsigned(15 downto 0)
 		);
 	end component;
 
@@ -45,7 +45,7 @@ architecture a_TOPLVL of TOPLVL is
 	component ACUMULADOR is
 		port( 	clk       :in std_logic;
 				wr_en     :in std_logic;
-				rst       : in std_logic;
+				rst       :in std_logic;
 				data_in   :in unsigned(15 downto 0);
 				data_out  :out unsigned(15 downto 0)
 

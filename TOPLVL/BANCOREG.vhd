@@ -4,12 +4,12 @@ use ieee.numeric_std.all;
 
 entity BANCOREG is
     port(
-        reg: in unsigned(2 downto 0);
-        dado: in unsigned(15 downto 0);
-        wr_en: in std_logic;
-        clk: in std_logic;
-        rst: in std_logic;
-        read_data: out unsigned(15 downto 0)
+        reg         :in unsigned(2 downto 0);
+        dado        :in unsigned(15 downto 0);
+        wr_en       :in std_logic;
+        clk         :in std_logic;
+        rst         :in std_logic;
+        read_data   :out unsigned(15 downto 0)
 
     );
 end entity;

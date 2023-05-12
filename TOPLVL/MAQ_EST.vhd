@@ -2,9 +2,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 entity MAQ_EST is
-    port(   clk,rst: in std_logic;
-            estado: out unsigned(1 downto 0)
- );
+    port(   clk,rst :in std_logic;
+            estado  :out unsigned(1 downto 0)
+    );
 end entity;
 architecture a_MAQ_EST of MAQ_EST is
         signal estado_s: unsigned(1 downto 0);

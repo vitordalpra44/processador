@@ -4,16 +4,16 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 --teste commit
 entity UC is
-    port( 	clk : in std_logic;
-		  	rst: in std_logic;
-			instruction: in unsigned (17 downto 0);
-			state: in unsigned(1 downto 0);
-		  	fetch : out std_logic;
-			execute : out std_logic;
-		  	decode : out std_logic;
-			wr_en_br: out std_logic;
-			mux_operation: out unsigned(1 downto 0);
-			wr_en_acumulador: out std_logic
+    port( 	clk 			:in std_logic;
+		  	rst				:in std_logic;
+			instruction		:in unsigned (17 downto 0);
+			state			:in unsigned(1 downto 0);
+		  	fetch 			:out std_logic;
+			execute 		:out std_logic;
+		  	decode 			:out std_logic;
+			wr_en_br		:out std_logic;
+			mux_operation	:out unsigned(1 downto 0);
+			wr_en_acumulador:out std_logic
     );
 end entity;
 
