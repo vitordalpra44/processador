@@ -8,6 +8,9 @@ entity UC is
 		  	rst				:in std_logic;
 			instruction		:in unsigned (17 downto 0);
 			state			:in unsigned(1 downto 0);
+			jump_en			:out std_logic;
+			mux_br_ula_sel	:out unsigned (0 downto 0);
+			acumulador_en	:out std_logic;
 		  	fetch 			:out std_logic;
 			execute 		:out std_logic;
 		  	decode 			:out std_logic;
@@ -20,24 +23,47 @@ end entity;
 architecture a_UC of UC is
 	begin
 
-		fetch <= '1' when state = "00" else
-		'0';
-		decode <= '1' when state = "01" else
-				'0';
+		fetch <= 	'1' when state = "00" else
+					'0';
+		decode <= 	'1' when state = "01" else
+					'0';
+		execute <= 	'1' when state = "10" else
+				  	'0';
 
-		execute <= '1' when state = "10" else
-				  '0';
 
 
-		wr_en_br <='1' when instruction(17 downto 14) = "0001" else
-			'0';
+
+		wr_en_br <=	'1' when instruction(17 downto 14) = "0101" else
+				   	'0';
+		
 		mux_operation <="00" when instruction(17 downto 14) = "0001" else --opcode de soma
 						"01" when instruction(17 downto 14) = "0011" else --opcode subtraçao
 						"10" when instruction(17 downto 14) = "0100" else -- opcode multiplicacao
 						"11" when instruction(17 downto 14) = "0101" else -- opcode comparacao
 						"00";
-		wr_en_acumulador <='1' when instruction(17 downto 14) = "0010" else
-		'0';
 		
+		acumulador_en <= 	'0' when instruction(17 downto 14) = "1000" else 
+							'1';
+		
+		wr_en_acumulador <=	'1' when instruction(17 downto 14) = "0001" else
+							'1' when instruction(17 downto 14) = "1001" else
+							'1' when instruction(17 downto 14) = "0010" else
+							'1' when instruction(17 downto 14) = "1010" else
+							'1' when instruction(17 downto 14) = "0011" else
+							'1' when instruction(17 downto 14) = "0100" else
+							'1' when instruction(17 downto 14) = "1101" else
+							'1' when instruction(17 downto 14) = "1000" else
+							'0';
+		
+		mux_br_ula_sel <=	"1" when instruction(17 downto 14) = "1001" else
+							"1" when instruction(17 downto 14) = "1010" else
+							"0";
+
+		acumulador_en <= 	'0' when instruction(17 downto 14) = "1000" else
+							'0' when instruction(17 downto 14) = "1101" else
+							'1';
+		
+		jump_en <=	'1' when instruction(17 downto 14) = "0110" else
+					'0';
 
 end architecture;
