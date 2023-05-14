@@ -77,6 +77,7 @@ architecture a_UC_PC_ROM of UC_PC_ROM is
 		REG_INSTR1: REG_INSTR port map(clk=>clk, wr_en=>wr_en_reg_instr_s, rst=>rst, data_in=>instruction_rom_s, data_out=>instruction_s);
 		MAQ_EST1: MAQ_EST port map(clk=>clk, rst=>rst, state=>state_s);
 		wr_en_acumulador <= wr_en_acumulador_s;
+		wr_en_br <=wr_en_br_s;
 		instruction_out <= instruction_s;
 		state <= state_s; 
 		PC <= PC_out;
