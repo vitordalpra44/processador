@@ -97,15 +97,25 @@ Desvios condicionais -
 
  NOSSO OPCODE (4 bits):
 	0000 - nop (não faz nada);
+	NOP
 	0001 - soma AC <= REG + AC  			formato: 0001_xxxxxxxxxxx_REG
+	ADD opr
 	1001 - soma AC <= REG + immediato  		formato: 1001_MMMMMMMMMMMMMM
+	ADD #opr
 	0010 - subtracao AC <=  AC - REG 		formato: 0010_xxxxxxxxxxx_REG
+	SUB opr
 	1010 - subtracao AC <=  AC - immediato 	formato: 1010_MMMMMMMMMMMMMM
+	SUB #opr
 	0011 - multiplicacao AC <= AC*REG 		formato: 0011_xxxxxxxxxxx_REG
+	MUL
 	0100 - comparacao AC <= AC & REG  		formato: 0100_xxxxxxxxxxx_REG
+	CMP opr
 	0101 - salvar AC no BR  				formato: 0101_xxxxxxxxxxx_REG
+	STA opr
 	1101 - carregar AC com BR  				formato: 1101_xxxxxxxxxxx_REG
+	LDA opr
 	0110 - jump imediato  	 				formato: 0110_xxxxxxx_MMMMMMM
-	0111 - jump AC (7 LSB)  				formato: 0111_xxxxxxxxxxxxxx
+	JMP opr
 	1000 - load imediato no AC  (16 LSB)	formato: 1000_MMMMMMMMMMMMMM
+	LDA #opr
 

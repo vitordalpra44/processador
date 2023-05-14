@@ -9,7 +9,7 @@ entity UC is
 			instruction		:in unsigned (17 downto 0);
 			state			:in unsigned(1 downto 0);
 			jump_en			:out std_logic;
-			mux_br_ula_sel	:out unsigned (0 downto 0);
+			mux_br_ula_sel	:out std_logic;
 			acumulador_en	:out std_logic;
 		  	fetch 			:out std_logic;
 			execute 		:out std_logic;
@@ -57,9 +57,10 @@ architecture a_UC of UC is
 									or instruction(17 downto 14) = "1000") and execute_s='1' else
 							'0';
 		
-		mux_br_ula_sel <=	"1" when instruction(17 downto 14) = "1001" else
-							"1" when instruction(17 downto 14) = "1010" else
-							"0";
+		mux_br_ula_sel <=	'1' when instruction(17 downto 14) = "1001" else
+							'1' when instruction(17 downto 14) = "1010" else
+							'1' when instruction(17 downto 14) = "1000" else
+							'0';
 
 		acumulador_en <= 	'0' when instruction(17 downto 14) = "1000" else
 							'0' when instruction(17 downto 14) = "1101" else

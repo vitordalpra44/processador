@@ -9,7 +9,7 @@ entity UC_PC_ROM is
 			wr_en_br 			:out std_logic;
 			wr_en_acumulador	:out std_logic;
 			acumulador_en		:out std_logic;
-			mux_br_ula_sel		:out unsigned (0 downto 0);
+			mux_br_ula_sel		:out std_logic;
 			immediate			:out unsigned (15 downto 0);
 			PC					:out unsigned(6 downto 0); -- Saida do PC
 			state				:out unsigned(1 downto 0);
@@ -28,7 +28,7 @@ architecture a_UC_PC_ROM of UC_PC_ROM is
 				instruction		:in unsigned (17 downto 0);
 				state			:in unsigned(1 downto 0);
 				jump_en			:out std_logic;
-				mux_br_ula_sel	:out unsigned;
+				mux_br_ula_sel	:out std_logic;
 				acumulador_en	:out std_logic;
 		  		fetch 			:out std_logic;
 				execute 		:out std_logic;
