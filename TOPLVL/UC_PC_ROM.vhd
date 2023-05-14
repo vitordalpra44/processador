@@ -68,21 +68,18 @@ architecture a_UC_PC_ROM of UC_PC_ROM is
 	signal instruction_s, instruction_rom_s : unsigned (17 downto 0);
 	signal wr_en_br_s, wr_en_pcrom_s, wr_en_acumulador_s : std_logic;
 	signal PC_in, PC_out: unsigned (6 downto 0);
-	signal wr_en_reg_instr_s: std_logic;
-	signal fetch, decode, execute : std_logic;
+	signal wr_en_reg_instr_s, execute: std_logic;
 	signal state_s: unsigned(1 downto 0);
 	signal jump_s: std_logic;
 	begin
-		CONTROLE0 : UC port map (clk=>clk, rst=>rst, instruction=> instruction_s, state =>state_s, jump_en => jump_s, mux_br_ula_sel => mux_br_ula_sel, acumulador_en => acumulador_en, fetch=> fetch, execute=>execute , decode=>decode,wr_en_br=>wr_en_br_s, mux_operation=>mux_operation, wr_en_acumulador=>wr_en_acumulador_s);
+		CONTROLE0 : UC port map (clk=>clk, rst=>rst, instruction=> instruction_s, state =>state_s, jump_en => jump_s, mux_br_ula_sel => mux_br_ula_sel, acumulador_en => acumulador_en, fetch=> wr_en_pcrom_s, execute=>execute , decode=>wr_en_reg_instr_s,wr_en_br=>wr_en_br_s, mux_operation=>mux_operation, wr_en_acumulador=>wr_en_acumulador_s);
 		PCROM0 : PCROM port map (clk=>clk, wr_en=> wr_en_pcrom_s, rst=>rst, data_in_pc=> PC_in, data_out_rom=> instruction_rom_s, data_out_pc=>PC_out);
 		REG_INSTR1: REG_INSTR port map(clk=>clk, wr_en=>wr_en_reg_instr_s, rst=>rst, data_in=>instruction_rom_s, data_out=>instruction_s);
-		MAQ_EST1: MAQ_EST port map(clk=>clk, rst=>rst, state=>state);
-		
+		MAQ_EST1: MAQ_EST port map(clk=>clk, rst=>rst, state=>state_s);
+		wr_en_acumulador <= wr_en_acumulador_s;
 		instruction_out <= instruction_s;
-		
-		wr_en_pcrom_s <= '1'; 
+		state <= state_s; 
 		PC <= PC_out;
-		state<=state_s;
 
 		PC_in <= 	instruction_s (6 downto 0) when jump_s = '1' else
 					PC_out + "0000001";

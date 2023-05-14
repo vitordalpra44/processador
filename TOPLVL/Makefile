@@ -18,4 +18,7 @@ all:
 	@ghdl -a TOPLVL.vhd
 	@ghdl -a TOPLVL_tb.vhd
 	@ghdl -e TOPLVL_tb
-	@ghdl -r TOPLVL_tb --vcd=teste.vcd
+	@ghdl -r TOPLVL_tb --vcd=teste_toplvl.vcd
+	@ghdl -a MAQ_EST_tb.vhd
+	@ghdl -e MAQ_EST_tb
+	@ghdl -r MAQ_EST_tb --vcd=maq_est_teste.vcd
