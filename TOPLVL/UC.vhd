@@ -36,10 +36,10 @@ architecture a_UC of UC is
 		wr_en_br <=	'1' when instruction(17 downto 14) = "0101" else
 				   	'0';
 		
-		mux_operation <="00" when instruction(17 downto 14) = "0001" else --opcode de soma
-						"01" when instruction(17 downto 14) = "0011" else --opcode subtraçao
-						"10" when instruction(17 downto 14) = "0100" else -- opcode multiplicacao
-						"11" when instruction(17 downto 14) = "0101" else -- opcode comparacao
+		mux_operation <="00" when instruction(17 downto 14) = "0001"  or instruction(17 downto 14) = "1001" else --opcode de soma
+						"01" when instruction(17 downto 14) = "0010" or instruction(17 downto 14) = "1010" else --opcode subtraçao
+						"10" when instruction(17 downto 14) = "0011" else -- opcode multiplicacao
+						"11" when instruction(17 downto 14) = "0100" else -- opcode comparacao
 						"00";
 		
 		acumulador_en <= 	'0' when instruction(17 downto 14) = "1000" else 

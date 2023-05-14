@@ -60,7 +60,7 @@ architecture a_UC_PC_ROM of UC_PC_ROM is
 	
 	component MAQ_EST is
 		port(   clk,rst		:in std_logic;
-            	estado		:out unsigned(1 downto 0)
+            	state		:out unsigned(1 downto 0)
  			);
 	end component;
 	
@@ -76,7 +76,7 @@ architecture a_UC_PC_ROM of UC_PC_ROM is
 		CONTROLE0 : UC port map (clk=>clk, rst=>rst, instruction=> instruction_s, state =>state_s, jump_en => jump_s, mux_br_ula_sel => mux_br_ula_sel, acumulador_en => acumulador_en, fetch=> fetch, execute=>execute , decode=>decode,wr_en_br=>wr_en_br_s, mux_operation=>mux_operation, wr_en_acumulador=>wr_en_acumulador_s);
 		PCROM0 : PCROM port map (clk=>clk, wr_en=> wr_en_pcrom_s, rst=>rst, data_in_pc=> PC_in, data_out_rom=> instruction_rom_s, data_out_pc=>PC_out);
 		REG_INSTR1: REG_INSTR port map(clk=>clk, wr_en=>wr_en_reg_instr_s, rst=>rst, data_in=>instruction_rom_s, data_out=>instruction_s);
-		MAQ_EST1: MAQ_EST port map(clk=>clk, rst=>rst, estado=>state);
+		MAQ_EST1: MAQ_EST port map(clk=>clk, rst=>rst, state=>state);
 		
 		instruction_out <= instruction_s;
 		

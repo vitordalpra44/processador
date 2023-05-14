@@ -7,24 +7,24 @@ end;
 
 architecture a_TOPLVL_tb of TOPLVL_tb is
     component TOPLVL
-        port(   clk: in std_logic;
-                rst : in std_logic;
-                PC :out unsigned(3 downto 0);
-                instrucao: out unsigned(17 downto 0);
-                reg1: out unsigned(15 downto 0);
-                reg2: out unsigned(15 downto 0);
-                ULA: out unsigned(15 downto 0)
+        port(   clk					:in std_logic;
+                rst 				:in std_logic;
+                PC 					:out unsigned(6 downto 0);
+                instruction			:out unsigned(17 downto 0);
+                reg					:out unsigned(15 downto 0);
+                acumulador_out		:out unsigned(15 downto 0);
+                ULA					:out unsigned(15 downto 0)
          );
     end component;
     constant period_time: time := 100 ns;
     signal finished: std_logic :='0';
     signal clk, rst: std_logic;
-    signal reg1, reg2, ULA: unsigned  (15 downto 0);
+    signal reg, ULA, acumulador: unsigned  (15 downto 0);
     signal instru: unsigned (17 downto 0);
-    signal PC_out: unsigned (3 downto 0);
+    signal PC_out: unsigned (6 downto 0);
 
     begin
-        uut: TOPLVL port map(clk=>clk, rst=>rst, PC=>PC_out, instrucao=>instru, reg1=>reg1, reg2=>reg2, ULA=>ULA);
+        uut: TOPLVL port map(clk=>clk, rst=>rst, PC=>PC_out, instruction=>instru, reg=>reg, acumulador_out=>acumulador, ULA=>ULA);
         
         reset_global: process
         begin
