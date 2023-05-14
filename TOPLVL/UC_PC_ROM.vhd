@@ -8,6 +8,9 @@ entity UC_PC_ROM is
 			rst 				:in std_logic;
 			wr_en_br 			:out std_logic;
 			wr_en_acumulador	:out std_logic;
+			acumulador_en		:out std_logic;
+			mux_br_ula_sel		:out unsigned (0 downto 0);
+			immediate			:out unsigned (15 downto 0);
 			PC					:out unsigned(6 downto 0); -- Saida do PC
 			state				:out unsigned(1 downto 0);
 			instruction_out 	:out unsigned(17 downto 0);
@@ -19,17 +22,21 @@ end entity;
 architecture a_UC_PC_ROM of UC_PC_ROM is
 
     component UC is
-		port( 	clk 			:in std_logic;
-				rst				:in std_logic;
+		port( 	
+				clk 			:in std_logic;
+		  		rst				:in std_logic;
 				instruction		:in unsigned (17 downto 0);
 				state			:in unsigned(1 downto 0);
-				fetch 			:out std_logic;
+				jump_en			:out std_logic;
+				mux_br_ula_sel	:out unsigned;
+				acumulador_en	:out std_logic;
+		  		fetch 			:out std_logic;
 				execute 		:out std_logic;
-				decode 			:out std_logic;
+		  		decode 			:out std_logic;
 				wr_en_br		:out std_logic;
 				mux_operation	:out unsigned(1 downto 0);
 				wr_en_acumulador:out std_logic
-			); 
+    	);
     end component;
 	
 	component PCROM is
@@ -66,8 +73,8 @@ architecture a_UC_PC_ROM of UC_PC_ROM is
 	signal state_s: unsigned(1 downto 0);
 	signal jump_s: std_logic;
 	begin
-		CONTROLE0 : UC port map (clk=>clk, rst=>rst, instruction=> instruction_s, state =>state_s, fetch=> fetch, execute=>execute , decode=>decode,wr_en_br=>wr_en_br_s, mux_operation=>mux_operation, wr_en_acumulador=>wr_en_acumulador_s);
-		PCROM0 : PCROM port map (clk=>clk, wr_en=> wr_en_pcrom_s, rst=>rst, data_in_pc=> PC_in, data_out_rom=> instruction_rom_s,data_out_pc=>PC_out);
+		CONTROLE0 : UC port map (clk=>clk, rst=>rst, instruction=> instruction_s, state =>state_s, jump_en => jump_s, mux_br_ula_sel => mux_br_ula_sel, acumulador_en => acumulador_en, fetch=> fetch, execute=>execute , decode=>decode,wr_en_br=>wr_en_br_s, mux_operation=>mux_operation, wr_en_acumulador=>wr_en_acumulador_s);
+		PCROM0 : PCROM port map (clk=>clk, wr_en=> wr_en_pcrom_s, rst=>rst, data_in_pc=> PC_in, data_out_rom=> instruction_rom_s, data_out_pc=>PC_out);
 		REG_INSTR1: REG_INSTR port map(clk=>clk, wr_en=>wr_en_reg_instr_s, rst=>rst, data_in=>instruction_rom_s, data_out=>instruction_s);
 		MAQ_EST1: MAQ_EST port map(clk=>clk, rst=>rst, estado=>state);
 		
@@ -79,6 +86,8 @@ architecture a_UC_PC_ROM of UC_PC_ROM is
 
 		PC_in <= 	instruction_s (6 downto 0) when jump_s = '1' else
 					PC_out + "0000001";
+
+		immediate <= "00" & instruction_s (13 downto 0); 
 		
 
 
