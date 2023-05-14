@@ -87,6 +87,6 @@ architecture a_UC_PC_ROM of UC_PC_ROM is
 
 		immediate <= "00" & instruction_s (13 downto 0); 
 		
-
+		reg <= instruction_s(2 downto 0);
 
 end architecture;
