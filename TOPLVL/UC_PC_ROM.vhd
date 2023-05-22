@@ -6,6 +6,8 @@ use ieee.numeric_std.all;
 entity UC_PC_ROM is
     port( 	clk					:in std_logic;
 			rst 				:in std_logic;
+			carry_subtr      	:in std_logic;
+            carry_soma      	:in std_logic;
 			wr_en_br 			:out std_logic;
 			wr_en_acumulador	:out std_logic;
 			acumulador_en		:out std_logic;
@@ -83,6 +85,7 @@ architecture a_UC_PC_ROM of UC_PC_ROM is
 		PC <= PC_out;
 
 		PC_in <= 	instruction_s (6 downto 0) when jump_s = '1' else
+					PC_out + instruction_s (9 downto 3) when instruction_s (17 downto 14) = "1100" and carry_subtr = '0' else
 					PC_out + "0000001";
 
 		immediate <= "00" & instruction_s (13 downto 0); 
