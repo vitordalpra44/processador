@@ -118,4 +118,4 @@ Desvios condicionais -
 	JMP opr
 	1000 - load imediato no AC  (16 LSB)	formato: 1000_MMMMMMMMMMMMMM
 	LDA #opr
-
+	1100 - branch se REG < AC               formato: 1100_xxxx_NNNNNNN_MMM
