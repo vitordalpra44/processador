@@ -23,7 +23,7 @@ architecture a_ROM of ROM is
         8 =>  "100100000000000001", -- AC <= AC + 1                     Código assembly:    ADD #1
         9 =>  "010100000000000011", -- REG3 <= AC                       Código assembly:    STA REG3
         10 => "100000000000011110", -- AC <= 30                         Código assembly:    ADD #30
-		11 => "110011111110111011", -- Se REG3<AC(=30) jump to instr 4  Código assembly: 
+		11 => "110011111110111011", -- Se REG3<=AC(=30) jump to instr 4 Código assembly:    BLE -8
         12 => "110100000000000100", -- AC <= REG4                       Código assembly:    ADD ,REG4 
         13 => "010100000000000101", -- REG5 <= AC                       Código assembly:    STA REG3
         14 => "000000000000000000",
