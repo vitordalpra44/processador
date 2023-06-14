@@ -12,6 +12,10 @@ entity UC_PC_ROM is
 			wr_en_acumulador	:out std_logic;
 			acumulador_en		:out std_logic;
 			mux_br_ula_sel		:out std_logic;
+			wr_en_ffsoma		:out std_logic;
+			wr_en_ffsubtr		:out std_logic;
+			ram_en				:out std_logic;
+			ram_mux				:out std_logic;
 			immediate			:out unsigned (15 downto 0);
 			PC					:out unsigned(6 downto 0); -- Saida do PC
 			state				:out unsigned(1 downto 0);
@@ -89,6 +93,18 @@ architecture a_UC_PC_ROM of UC_PC_ROM is
 					PC_out + "0000001";
 
 		immediate <= "00" & instruction_s (13 downto 0); 
+
+		wr_en_ffsoma <= '1' when instruction_s (17 downto 14) = "0100"
+							else '0';
+
+		wr_en_ffsubtr <= '1' when instruction_s (17 downto 14) = "0100"
+							else '0';
+		
+		ram_mux <= '1' when instruction_s (17 downto 14) = "1110"
+						else '0';
+		
+		ram_en <= '1' when instruction_s (17 downto 14) = "1111"
+						else '0';
 		
 		reg <= instruction_s(2 downto 0);
 

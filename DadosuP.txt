@@ -108,7 +108,7 @@ Desvios condicionais -
 	SUB #opr
 	0011 - multiplicacao AC <= AC*REG 		formato: 0011_xxxxxxxxxxx_REG
 	MUL
-	0100 - comparacao AC <= AC & REG  		formato: 0100_xxxxxxxxxxx_REG
+	0100 - comparacao C <= AC & REG  		formato: 0100_xxxxxxxxxxx_REG
 	CMP opr
 	0101 - salvar AC no BR  				formato: 0101_xxxxxxxxxxx_REG
 	STA opr
@@ -119,3 +119,7 @@ Desvios condicionais -
 	1000 - load imediato no AC  (16 LSB)	formato: 1000_MMMMMMMMMMMMMM
 	LDA #opr
 	1100 - branch se REG < AC               formato: 1100_xxxx_NNNNNNN_MMM
+	LOADMEM opr reg
+	1110 - carregar da memoria no registrador formato: 1110_xxxx_MMMMMMM_RRR
+	STOREMEM opr reg
+	1111 - salvar registrador na memoria	 formato: 1111_xxxx_MMMMMMM_RRR

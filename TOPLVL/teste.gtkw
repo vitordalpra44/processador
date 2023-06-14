@@ -1,0 +1,37 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Tue Jun 13 20:25:12 2023
+[*]
+[dumpfile] "C:\Users\danis\Documents\UTFPR\Materias6oPeriodo\ArqComp\Atual\processador\TOPLVL\toplvl.ghw"
+[dumpfile_mtime] "Tue Jun 13 20:16:45 2023"
+[dumpfile_size] 375299
+[savefile] "C:\Users\danis\Documents\UTFPR\Materias6oPeriodo\ArqComp\Atual\processador\TOPLVL\teste.gtkw"
+[timestart] 0
+[size] 1859 1107
+[pos] 146 75
+*-28.003311 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.toplvl_tb.
+[treeopen] top.toplvl_tb.uut.
+[treeopen] top.toplvl_tb.uut.ram1.
+[sst_width] 351
+[signals_width] 198
+[sst_expanded] 1
+[sst_vpaned_height] 331
+@22
+#{top.toplvl_tb.pc_out[6:0]} top.toplvl_tb.pc_out[6] top.toplvl_tb.pc_out[5] top.toplvl_tb.pc_out[4] top.toplvl_tb.pc_out[3] top.toplvl_tb.pc_out[2] top.toplvl_tb.pc_out[1] top.toplvl_tb.pc_out[0]
+@28
+#{top.toplvl_tb.instru[17:0]} top.toplvl_tb.instru[17] top.toplvl_tb.instru[16] top.toplvl_tb.instru[15] top.toplvl_tb.instru[14] top.toplvl_tb.instru[13] top.toplvl_tb.instru[12] top.toplvl_tb.instru[11] top.toplvl_tb.instru[10] top.toplvl_tb.instru[9] top.toplvl_tb.instru[8] top.toplvl_tb.instru[7] top.toplvl_tb.instru[6] top.toplvl_tb.instru[5] top.toplvl_tb.instru[4] top.toplvl_tb.instru[3] top.toplvl_tb.instru[2] top.toplvl_tb.instru[1] top.toplvl_tb.instru[0]
+@24
+#{top.toplvl_tb.acumulador[15:0]} top.toplvl_tb.acumulador[15] top.toplvl_tb.acumulador[14] top.toplvl_tb.acumulador[13] top.toplvl_tb.acumulador[12] top.toplvl_tb.acumulador[11] top.toplvl_tb.acumulador[10] top.toplvl_tb.acumulador[9] top.toplvl_tb.acumulador[8] top.toplvl_tb.acumulador[7] top.toplvl_tb.acumulador[6] top.toplvl_tb.acumulador[5] top.toplvl_tb.acumulador[4] top.toplvl_tb.acumulador[3] top.toplvl_tb.acumulador[2] top.toplvl_tb.acumulador[1] top.toplvl_tb.acumulador[0]
+#{top.toplvl_tb.ula[15:0]} top.toplvl_tb.ula[15] top.toplvl_tb.ula[14] top.toplvl_tb.ula[13] top.toplvl_tb.ula[12] top.toplvl_tb.ula[11] top.toplvl_tb.ula[10] top.toplvl_tb.ula[9] top.toplvl_tb.ula[8] top.toplvl_tb.ula[7] top.toplvl_tb.ula[6] top.toplvl_tb.ula[5] top.toplvl_tb.ula[4] top.toplvl_tb.ula[3] top.toplvl_tb.ula[2] top.toplvl_tb.ula[1] top.toplvl_tb.ula[0]
+@22
+#{top.toplvl_tb.uut.mem_addr_s[6:0]} top.toplvl_tb.uut.mem_addr_s[6] top.toplvl_tb.uut.mem_addr_s[5] top.toplvl_tb.uut.mem_addr_s[4] top.toplvl_tb.uut.mem_addr_s[3] top.toplvl_tb.uut.mem_addr_s[2] top.toplvl_tb.uut.mem_addr_s[1] top.toplvl_tb.uut.mem_addr_s[0]
+#{top.toplvl_tb.uut.ram1.conteudo_ram[5][15:0]} top.toplvl_tb.uut.ram1.conteudo_ram[5][15] top.toplvl_tb.uut.ram1.conteudo_ram[5][14] top.toplvl_tb.uut.ram1.conteudo_ram[5][13] top.toplvl_tb.uut.ram1.conteudo_ram[5][12] top.toplvl_tb.uut.ram1.conteudo_ram[5][11] top.toplvl_tb.uut.ram1.conteudo_ram[5][10] top.toplvl_tb.uut.ram1.conteudo_ram[5][9] top.toplvl_tb.uut.ram1.conteudo_ram[5][8] top.toplvl_tb.uut.ram1.conteudo_ram[5][7] top.toplvl_tb.uut.ram1.conteudo_ram[5][6] top.toplvl_tb.uut.ram1.conteudo_ram[5][5] top.toplvl_tb.uut.ram1.conteudo_ram[5][4] top.toplvl_tb.uut.ram1.conteudo_ram[5][3] top.toplvl_tb.uut.ram1.conteudo_ram[5][2] top.toplvl_tb.uut.ram1.conteudo_ram[5][1] top.toplvl_tb.uut.ram1.conteudo_ram[5][0]
+#{top.toplvl_tb.uut.ram1.endereco[6:0]} top.toplvl_tb.uut.ram1.endereco[6] top.toplvl_tb.uut.ram1.endereco[5] top.toplvl_tb.uut.ram1.endereco[4] top.toplvl_tb.uut.ram1.endereco[3] top.toplvl_tb.uut.ram1.endereco[2] top.toplvl_tb.uut.ram1.endereco[1] top.toplvl_tb.uut.ram1.endereco[0]
+@29
+top.toplvl_tb.uut.ram1.wr_en
+@22
+#{top.toplvl_tb.reg[15:0]} top.toplvl_tb.reg[15] top.toplvl_tb.reg[14] top.toplvl_tb.reg[13] top.toplvl_tb.reg[12] top.toplvl_tb.reg[11] top.toplvl_tb.reg[10] top.toplvl_tb.reg[9] top.toplvl_tb.reg[8] top.toplvl_tb.reg[7] top.toplvl_tb.reg[6] top.toplvl_tb.reg[5] top.toplvl_tb.reg[4] top.toplvl_tb.reg[3] top.toplvl_tb.reg[2] top.toplvl_tb.reg[1] top.toplvl_tb.reg[0]
+[pattern_trace] 1
+[pattern_trace] 0
