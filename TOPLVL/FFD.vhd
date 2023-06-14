@@ -18,7 +18,6 @@ architecture a_FFD of FFD is
         begin
     process(clk, rst)
     begin
-		saida <='0';
         if rst='1' then
             saida <='0';
         elsif wr_en = '1' then
