@@ -23,7 +23,7 @@ begin
     soma <= soma_ext(15 downto 0);
     subtracao <= val0-val1;
     carry_soma <= soma_ext (16);
-    carry_subtr <=  '0' when val1 <= val0 else
+    carry_subtr <=  '0' when val1 <= val0 else -- AC >= REG/IMME
                     '1';
     maior_que<= "0000000000000001" when val0>val1 else
                 "0000000000000000" when val0<=val1 else

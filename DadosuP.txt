@@ -100,14 +100,14 @@ Desvios condicionais -
 	NOP
 	0001 - soma AC <= REG + AC  			formato: 0001_xxxxxxxxxxx_REG
 	ADD opr
-	1001 - soma AC <= REG + immediato  		formato: 1001_MMMMMMMMMMMMMM
+	1001 - soma AC <= AC + immediato  		formato: 1001_MMMMMMMMMMMMMM
 	ADD #opr
 	0010 - subtracao AC <=  AC - REG 		formato: 0010_xxxxxxxxxxx_REG
 	SUB opr
 	1010 - subtracao AC <=  AC - immediato 	formato: 1010_MMMMMMMMMMMMMM
 	SUB #opr
 	0011 - multiplicacao AC <= AC*REG 		formato: 0011_xxxxxxxxxxx_REG
-	MUL
+	MUL opr
 	0100 - comparacao C <= AC & REG  		formato: 0100_xxxxxxxxxxx_REG
 	CMP opr
 	0101 - salvar AC no BR  				formato: 0101_xxxxxxxxxxx_REG
@@ -118,8 +118,9 @@ Desvios condicionais -
 	JMP opr
 	1000 - load imediato no AC  (16 LSB)	formato: 1000_MMMMMMMMMMMMMM
 	LDA #opr
-	1100 - branch se REG < AC               formato: 1100_xxxx_NNNNNNN_MMM
-	LOADMEM opr reg
-	1110 - carregar da memoria no registrador formato: 1110_xxxx_MMMMMMM_RRR
-	STOREMEM opr reg
-	1111 - salvar registrador na memoria	 formato: 1111_xxxx_MMMMMMM_RRR
+	1100 - branch se REG < AC               formato: 1100_xxxx_NNNNNNN_xxx
+	
+	LOADMEM* A reg
+	0111 - carregar da memoria no registrador formato: 1110_xxxxxxxxxxx_RRR
+	STOREMEM* A reg
+	1011 - salvar registrador na memoria	 formato: 1111_xxxxxxxxxxx_RRR

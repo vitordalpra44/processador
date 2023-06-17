@@ -89,7 +89,7 @@ architecture a_UC_PC_ROM of UC_PC_ROM is
 		PC <= PC_out;
 
 		PC_in <= 	instruction_s (6 downto 0) when jump_s = '1' else
-					PC_out + instruction_s (9 downto 3) when instruction_s (17 downto 14) = "1100" and carry_subtr = '0' else
+					PC_out + instruction_s (9 downto 3) when instruction_s (17 downto 14) = "1100" and carry_subtr = '1' else
 					PC_out + "0000001";
 
 		immediate <= "00" & instruction_s (13 downto 0); 
@@ -100,10 +100,10 @@ architecture a_UC_PC_ROM of UC_PC_ROM is
 		wr_en_ffsubtr <= '1' when instruction_s (17 downto 14) = "0100"
 							else '0';
 		
-		ram_mux <= '1' when instruction_s (17 downto 14) = "1110"
+		ram_mux <= '1' when instruction_s (17 downto 14) = "0111"
 						else '0';
 		
-		ram_en <= '1' when instruction_s (17 downto 14) = "1111"
+		ram_en <= '1' when instruction_s (17 downto 14) = "1011"
 						else '0';
 		
 		reg <= instruction_s(2 downto 0);
