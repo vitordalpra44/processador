@@ -97,7 +97,7 @@ architecture a_TOPLVL of TOPLVL is
 	signal reg_s: unsigned(2 downto 0);
 	signal wr_en_br_s, wr_en_acumulador_s, acumulador_en_s, wr_en_ffsoma_s, wr_en_ffsubtr_s: std_logic;
 	signal mux_br_ula_s, carry_subtr_s, carry_soma_s, ff_soma_s, ff_subtr_s, ram_mux_s, ram_en_s: std_logic;
-	signal ula_result_s, acumulador_s, immediate_s, br_s, br_in_s, ram_out_s, instruction_s: unsigned (15 downto 0);
+	signal ula_result_s, acumulador_s, immediate_s, br_s, br_in_s, ram_out_s: unsigned (15 downto 0);
 	signal instruction_s: unsigned (17 downto 0);
 	signal mem_addr_s: unsigned (6 downto 0);
 
