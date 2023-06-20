@@ -1,61 +1,61 @@
 v 4
-file . "FFD.vhd" "79a592a97f0a1eb61355e2761a69ac2fcf62efd0" "20230619165554.910":
-  entity ffd at 2( 15) + 0 on 833;
-  architecture a_ffd of ffd at 15( 307) + 0 on 834;
-file . "TOPLVL.vhd" "869a8e197198d5721a964cccaa7cf67762976e5c" "20230619165555.028":
-  entity toplvl at 2( 77) + 0 on 855;
-  architecture a_toplvl of toplvl at 17( 472) + 0 on 856;
-file . "UC_PC_ROM.vhd" "f7e6b8dbd7b97c12a31c67c18533f1b03e082c43" "20230619165555.059":
-  entity uc_pc_rom at 2( 34) + 0 on 861;
-  architecture a_uc_pc_rom of uc_pc_rom at 28( 907) + 0 on 862;
-file . "UC.vhd" "b15d9bda0ace7bb8695b4400ad5b55d8ec6700b3" "20230619165555.049":
-  entity uc at 2( 23) + 0 on 859;
-  architecture a_uc of uc at 23( 595) + 0 on 860;
-file . "FFT.vhd" "e5c0beda9ff178de304cc8631ef7d93833cfa197" "20230619165554.899":
-  entity fft at 2( 15) + 0 on 831;
-  architecture a_fft of fft at 14( 271) + 0 on 832;
-file . "BANCOREG.vhd" "8e1296fe90c2b5cccab7b41fce361faf7b0800f2" "20230619165554.878":
-  entity bancoreg at 1( 0) + 0 on 827;
-  architecture a_bancoreg of bancoreg at 16( 379) + 0 on 828;
-file . "PCROM.vhd" "a400441496fcbcefc423369898c5da4306b132c1" "20230619165554.985":
-  entity pcrom at 2( 26) + 0 on 847;
-  architecture a_pcrom of pcrom at 16( 462) + 0 on 848;
-file . "PC.vhd" "2cbce0e57680dd15eea9992059b6c54da0a68acd" "20230619165554.974":
-  entity pc at 1( 0) + 0 on 845;
-  architecture a_pc of pc at 14( 313) + 0 on 846;
-file . "OPERACOES.vhd" "d059c7e9c67f8eedd64f9ed60006864786fb7deb" "20230619165554.964":
-  entity operacoes at 1( 0) + 0 on 843;
-  architecture a_operacoes of operacoes at 18( 515) + 0 on 844;
-file . "MUX2x1.vhd" "27f752f30d3db021614f4ee00171f27c3b9ed03c" "20230619165554.942":
-  entity mux2x1 at 1( 0) + 0 on 839;
-  architecture a_mux2x1 of mux2x1 at 14( 289) + 0 on 840;
-file . "MUX4x1.vhd" "afb4c172a099a46f75805830d17924fcb48e0307" "20230619165554.954":
-  entity mux4x1 at 1( 0) + 0 on 841;
-  architecture a_mux4x1 of mux4x1 at 15( 375) + 0 on 842;
-file . "ULA.vhd" "c3437f49637f93618b7e6c88ea9802a96a808024" "20230619165555.069":
-  entity ula at 1( 0) + 0 on 863;
-  architecture a_ula of ula at 17( 439) + 0 on 864;
-file . "ROM.vhd" "f13502879f8eb7fdee43677d9364170019ea1822" "20230619165555.017":
-  entity rom at 2( 45) + 0 on 853;
-  architecture a_rom of rom at 11( 279) + 0 on 854;
-file . "REGISTRADOR.vhd" "ec1c9b39dbae2141b21333c0b253c1f87ab1f2e9" "20230619165554.995":
-  entity registrador at 1( 0) + 0 on 849;
-  architecture a_registrador of registrador at 14( 324) + 0 on 850;
-file . "BANCOREG_ULA.vhd" "e900f3e78f86eee846f0e72c67925bba6839f19f" "20230619165554.889":
-  entity bancoreg_ula at 1( 0) + 0 on 829;
-  architecture a_bancoreg_ula of bancoreg_ula at 23( 605) + 0 on 830;
-file . "MAQ_EST.vhd" "61229b5691de51f47a2fe144a9e355d8b06c0992" "20230619165554.931":
-  entity maq_est at 1( 0) + 0 on 837;
-  architecture a_maq_est of maq_est at 9( 194) + 0 on 838;
-file . "REG_INSTR.vhd" "f71ada57d91dc4c7ecbeb755c28b52d1a514c8fc" "20230619165555.006":
-  entity reg_instr at 1( 0) + 0 on 851;
-  architecture a_reg_instr of reg_instr at 14( 322) + 0 on 852;
-file . "ACUMULADOR.vhd" "ca6037dc0ef11fc97ee5bc4c9b565bfe328f2f45" "20230619165554.866":
-  entity acumulador at 1( 0) + 0 on 825;
-  architecture a_acumulador of acumulador at 14( 323) + 0 on 826;
-file . "TOPLVL_tb.vhd" "03d2067c2e26be973b75faba492ed2f97d7aa485" "20230619165555.038":
-  entity toplvl_tb at 1( 0) + 0 on 857;
-  architecture a_toplvl_tb of toplvl_tb at 8( 103) + 0 on 858;
-file . "RAM.vhd" "1548a7f0a5e6af50d22da82ed95699f89a8c83f9" "20230619165554.921":
-  entity ram at 1( 0) + 0 on 835;
-  architecture a_ram of ram at 18( 329) + 0 on 836;
+file . "FFD.vhd" "79a592a97f0a1eb61355e2761a69ac2fcf62efd0" "20230620031811.252":
+  entity ffd at 2( 15) + 0 on 873;
+  architecture a_ffd of ffd at 15( 307) + 0 on 874;
+file . "TOPLVL.vhd" "869a8e197198d5721a964cccaa7cf67762976e5c" "20230620031811.381":
+  entity toplvl at 2( 77) + 0 on 895;
+  architecture a_toplvl of toplvl at 17( 472) + 0 on 896;
+file . "UC_PC_ROM.vhd" "f7e6b8dbd7b97c12a31c67c18533f1b03e082c43" "20230620031811.418":
+  entity uc_pc_rom at 2( 34) + 0 on 901;
+  architecture a_uc_pc_rom of uc_pc_rom at 28( 907) + 0 on 902;
+file . "UC.vhd" "b15d9bda0ace7bb8695b4400ad5b55d8ec6700b3" "20230620031811.406":
+  entity uc at 2( 23) + 0 on 899;
+  architecture a_uc of uc at 23( 595) + 0 on 900;
+file . "FFT.vhd" "e5c0beda9ff178de304cc8631ef7d93833cfa197" "20230620031811.240":
+  entity fft at 2( 15) + 0 on 871;
+  architecture a_fft of fft at 14( 271) + 0 on 872;
+file . "BANCOREG.vhd" "8e1296fe90c2b5cccab7b41fce361faf7b0800f2" "20230620031811.215":
+  entity bancoreg at 1( 0) + 0 on 867;
+  architecture a_bancoreg of bancoreg at 16( 379) + 0 on 868;
+file . "PCROM.vhd" "a400441496fcbcefc423369898c5da4306b132c1" "20230620031811.333":
+  entity pcrom at 2( 26) + 0 on 887;
+  architecture a_pcrom of pcrom at 16( 462) + 0 on 888;
+file . "PC.vhd" "2cbce0e57680dd15eea9992059b6c54da0a68acd" "20230620031811.321":
+  entity pc at 1( 0) + 0 on 885;
+  architecture a_pc of pc at 14( 313) + 0 on 886;
+file . "OPERACOES.vhd" "d059c7e9c67f8eedd64f9ed60006864786fb7deb" "20230620031811.310":
+  entity operacoes at 1( 0) + 0 on 883;
+  architecture a_operacoes of operacoes at 18( 515) + 0 on 884;
+file . "MUX2x1.vhd" "27f752f30d3db021614f4ee00171f27c3b9ed03c" "20230620031811.287":
+  entity mux2x1 at 1( 0) + 0 on 879;
+  architecture a_mux2x1 of mux2x1 at 14( 289) + 0 on 880;
+file . "MUX4x1.vhd" "afb4c172a099a46f75805830d17924fcb48e0307" "20230620031811.299":
+  entity mux4x1 at 1( 0) + 0 on 881;
+  architecture a_mux4x1 of mux4x1 at 15( 375) + 0 on 882;
+file . "ULA.vhd" "c3437f49637f93618b7e6c88ea9802a96a808024" "20230620031811.430":
+  entity ula at 1( 0) + 0 on 903;
+  architecture a_ula of ula at 17( 439) + 0 on 904;
+file . "ROM.vhd" "2edbda988fd7f07a5202696af527efc04675fd0b" "20230620031811.368":
+  entity rom at 2( 45) + 0 on 893;
+  architecture a_rom of rom at 11( 279) + 0 on 894;
+file . "REGISTRADOR.vhd" "ec1c9b39dbae2141b21333c0b253c1f87ab1f2e9" "20230620031811.345":
+  entity registrador at 1( 0) + 0 on 889;
+  architecture a_registrador of registrador at 14( 324) + 0 on 890;
+file . "BANCOREG_ULA.vhd" "e900f3e78f86eee846f0e72c67925bba6839f19f" "20230620031811.228":
+  entity bancoreg_ula at 1( 0) + 0 on 869;
+  architecture a_bancoreg_ula of bancoreg_ula at 23( 605) + 0 on 870;
+file . "MAQ_EST.vhd" "61229b5691de51f47a2fe144a9e355d8b06c0992" "20230620031811.275":
+  entity maq_est at 1( 0) + 0 on 877;
+  architecture a_maq_est of maq_est at 9( 194) + 0 on 878;
+file . "REG_INSTR.vhd" "f71ada57d91dc4c7ecbeb755c28b52d1a514c8fc" "20230620031811.356":
+  entity reg_instr at 1( 0) + 0 on 891;
+  architecture a_reg_instr of reg_instr at 14( 322) + 0 on 892;
+file . "ACUMULADOR.vhd" "ca6037dc0ef11fc97ee5bc4c9b565bfe328f2f45" "20230620031811.201":
+  entity acumulador at 1( 0) + 0 on 865;
+  architecture a_acumulador of acumulador at 14( 323) + 0 on 866;
+file . "TOPLVL_tb.vhd" "03d2067c2e26be973b75faba492ed2f97d7aa485" "20230620031811.393":
+  entity toplvl_tb at 1( 0) + 0 on 897;
+  architecture a_toplvl_tb of toplvl_tb at 8( 103) + 0 on 898;
+file . "RAM.vhd" "1548a7f0a5e6af50d22da82ed95699f89a8c83f9" "20230620031811.264":
+  entity ram at 1( 0) + 0 on 875;
+  architecture a_ram of ram at 18( 329) + 0 on 876;
